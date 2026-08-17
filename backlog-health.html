@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Backlog Health Across Scrum, Kanban & XP — Agile by Killette</title>
+<meta name="description" content="Backlog health across Scrum, Kanban and XP — what a healthy backlog looks like in each, and the signals that it is drifting.">
+<link rel="canonical" href="https://agilebykillette.com/backlog-health.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Backlog Health Across Scrum, Kanban &amp; XP">
+<meta property="og:description" content="Backlog health across Scrum, Kanban and XP — what a healthy backlog looks like in each, and the signals that it is drifting.">
+<meta property="og:url" content="https://agilebykillette.com/backlog-health.html">
+<meta property="og:image" content="https://agilebykillette.com/og-backlog-health.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Backlog Health Across Scrum, Kanban &amp; XP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Backlog Health Across Scrum, Kanban &amp; XP">
+<meta name="twitter:description" content="Backlog health across Scrum, Kanban and XP — what a healthy backlog looks like in each, and the signals that it is drifting.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-backlog-health.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--green:#2E7D57;--red:#B4483C;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:50px 0 44px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:42px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px;max-width:17ch}
+  header h1 .g{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:640px}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:14px;font-size:14.5px}
+  .intro{color:var(--slate);font-size:16px;max-width:760px;margin:30px auto 8px;border-left:3px solid var(--gold);padding-left:16px}
+  section.body{padding:22px 0 6px}
+  h2.sec{font-size:1.55rem;color:var(--navy);font-weight:800;margin:30px 0 14px;border-bottom:2px solid var(--gold);padding-bottom:8px;display:inline-block}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .card h3{font-size:1.28rem;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .card .csub{color:var(--muted);font-size:.85rem;font-weight:600;margin-bottom:14px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+  @media(max-width:640px){.row{grid-template-columns:1fr}}
+  .mini h4{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:800;margin-bottom:8px}
+  .mini.good h4{color:var(--green)} .mini.bad h4{color:var(--red)}
+  .mini ul{list-style:none} .mini li{position:relative;padding-left:20px;margin-bottom:7px;color:var(--slate);font-size:14.5px}
+  .mini li:before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:2px;transform:rotate(45deg)}
+  .mini.good li:before{background:var(--green)} .mini.bad li:before{background:var(--red)}
+  .wip{background:var(--navy2);color:#fff;border-radius:11px;padding:14px 18px;margin-top:14px}
+  .wip b{color:var(--gold2)}
+  p.lead{color:var(--slate);font-size:15.5px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
+  .chip{background:#EEF3F8;color:var(--navy);border:1px solid #dbe6f0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+  ul.plain{list-style:none;margin-top:6px} ul.plain li{position:relative;padding-left:24px;margin-bottom:9px;color:var(--slate);font-size:15px}
+  ul.plain li:before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--gold);border-radius:3px;transform:rotate(45deg)}
+  ul.plain li b{color:var(--ink)}
+  .pull{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:28px 30px;margin:24px 0;position:relative;overflow:hidden}
+  .pull:after{content:"";position:absolute;left:-80px;bottom:-80px;width:250px;height:250px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .pull .q{font-size:1.35rem;font-weight:700;font-style:italic;color:#fff;position:relative}
+  .callout{background:linear-gradient(120deg,rgba(176,141,62,.12),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:12px;padding:18px 20px;margin:16px 0}
+  .callout b{color:var(--navy)}
+  footer{text-align:center;padding:30px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px} footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.card,.pull{break-inside:avoid;box-shadow:none}header:after,.pull:after{display:none}}
+</style></head><body><header><div class="wrap"><div class="eyebrow">A Practical Guide by Agile by Killette</div><h1>Backlog Health <span class="g">&amp;</span> Team WIP</h1><div class="lede">A healthy backlog is the fuel of flow — and a sick one is the hidden hand behind most WIP and predictability problems. Here's how it reads across Scrum, Kanban, and XP.</div><div class="tagline">From ceremony to ownership.</div></div></header><div class="wrap"><p class="intro">Refine the same backlog three ways and you'll hear three vocabularies — but the health signals, and the way an unhealthy backlog wrecks your work-in-progress, are universal. This is how I keep a backlog honest so flow actually holds.</p><section class="body">
+<h2 class="sec">What a healthy backlog looks like</h2>
+<p class="lead">The framework changes the vocabulary, not the fundamentals. Across Scrum, Kanban, and XP, a healthy backlog is <b>DEEP</b>: Detailed appropriately, Emergent, Estimated, and Prioritized — ordered by value, sliced small enough to flow, and continuously refined so the top is always ready to pull.</p>
+<div class="chips"><span class="chip">Ordered by value</span><span class="chip">Right-sized to flow</span><span class="chip">Refined continuously, not in a panic</span><span class="chip">Clear "ready" definition</span><span class="chip">Not a 2-year graveyard</span></div>
+<h2 class="sec">Through each lens</h2>
+<div class="card"><h3>🌀 Scrum</h3><div class="csub">Product Backlog → Sprint Backlog</div>
+<div class="row"><div class="mini good"><h4>Healthy looks like</h4><ul><li>PO orders by value; top items refined ~1–2 sprints ahead</li><li>Top stories meet the Definition of Ready</li><li>Each sprint has a clear, sliceable goal</li></ul></div>
+<div class="mini bad"><h4>Warning signs</h4><ul><li>Unrefined items pulled into the sprint</li><li>Oversized stories that can't finish in a sprint</li><li>No sprint goal — just a pile of tickets</li></ul></div></div>
+<div class="wip"><b>WIP impact:</b> unready or oversized items get started but can't finish — they roll to carryover, WIP balloons, and the sprint commitment quietly erodes.</div></div>
+<div class="card"><h3>📋 Kanban</h3><div class="csub">Replenished queue feeding a pull-based board</div>
+<div class="row"><div class="mini good"><h4>Healthy looks like</h4><ul><li>Regular replenishment cadence, not a dumping ground</li><li>Explicit "Ready" queue; work pulled only on capacity</li><li>Right-sized cards with clear acceptance</li></ul></div>
+<div class="mini bad"><h4>Warning signs</h4><ul><li>Unbounded backlog, no replenishment discipline</li><li>Cards without a clear "ready" state</li><li>Starting work because it's there, not because there's capacity</li></ul></div></div>
+<div class="wip"><b>WIP impact:</b> without a healthy ready-queue <i>and</i> explicit WIP limits, the board floods, items age, and cycle time explodes — flow stalls even though everyone's "busy."</div></div>
+<div class="card"><h3>🧪 Extreme Programming (XP)</h3><div class="csub">Story cards, the planning game, and the 3 C's</div>
+<div class="row"><div class="mini good"><h4>Healthy looks like</h4><ul><li>Tiny, customer-prioritized stories (thin vertical slices)</li><li>Continuous customer involvement in the planning game</li><li>Acceptance tests define "done" (Card, Conversation, Confirmation)</li></ul></div>
+<div class="mini bad"><h4>Warning signs</h4><ul><li>Big stories that hide risk and effort</li><li>Absent customer / stale priorities</li><li>No acceptance criteria or tests</li></ul></div></div>
+<div class="wip"><b>WIP impact:</b> big stories mean long-lived branches and painful integration — WIP hides in unmerged, unfinished work you can't see on the board.</div></div>
+<h2 class="sec">The throughline: backlog health <em>is</em> a WIP problem</h2>
+<div class="callout"><b>Little's Law:</b> WIP = Throughput × Cycle Time. An unhealthy backlog is the #1 hidden driver of excess WIP — unready and oversized items get started but can't finish, so they pile up in progress and stretch cycle time. You can set all the WIP limits you want; if the backlog feeding the board is sick, flow still breaks.</div>
+<p class="lead"><b>Backlog health and WIP limits are two halves of the same discipline.</b> One without the other doesn't hold.</p>
+<h2 class="sec">How I coach it</h2>
+<ul class="plain">
+<li><b>Definition of Ready, enforced</b> — nothing enters the sprint or board until it's right-sized and clear.</li>
+<li><b>Refinement as a habit</b> — small and continuous (weekly), never a big-batch scramble.</li>
+<li><b>Slice vertically and thin</b> — smaller stories flow faster and surface risk earlier.</li>
+<li><b>Pair health with explicit WIP limits</b> — so a clean backlog actually translates into flow.</li>
+<li><b>Let AI watch the backlog</b> — JQL + AI to flag oversized, unrefined, and aging items before they clog the board.</li>
+</ul>
+</section></div><footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette · Agile Coach · Scrum Master · RTE · PMP-trained PM · wendell@agilebykillette.com · 469-774-2233</div></div></footer></body></html>

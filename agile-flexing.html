@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agile Flexing: Naming It Without Naming Anyone &mdash; Agile by Killette</title>
+<meta name="description" content="When agile knowledge becomes ego instead of leadership — and how to raise it in a retrospective without putting anyone on trial. Name the effect, never the person.">
+<link rel="canonical" href="https://agilebykillette.com/agile-flexing.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Agile Flexing: Naming It Without Naming Anyone">
+<meta property="og:description" content="When agile knowledge becomes ego instead of leadership — and how to raise it in a retrospective without putting anyone on trial. Name the effect, never the person.">
+<meta property="og:url" content="https://agilebykillette.com/agile-flexing.html">
+<meta property="og:image" content="https://agilebykillette.com/og-agile-flexing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agile Flexing: Naming It Without Naming Anyone">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agile Flexing: Naming It Without Naming Anyone">
+<meta name="twitter:description" content="When agile knowledge becomes ego instead of leadership — and how to raise it in a retrospective without putting anyone on trial. Name the effect, never the person.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-agile-flexing.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--green:#2E7D57;--red:#B4483C;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  .home{display:inline-block;color:var(--gold2);font-weight:600;font-size:.92rem;margin-bottom:18px}
+  .home:hover{color:#fff}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:46px 0 44px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:42px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px;max-width:19ch;position:relative}
+  header h1 .g{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:660px;position:relative}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:14px;font-size:14.5px;position:relative}
+  .heroshot{margin:26px 0 4px;border-radius:16px;overflow:hidden;box-shadow:0 14px 38px rgba(21,42,64,.16);border:1px solid var(--line);background:#fff}
+  .heroshot img{width:100%;display:block}
+  .heroshot figcaption{font-size:13.5px;color:var(--muted);padding:12px 16px;text-align:center;font-style:italic}
+  .heroshot.tall img{max-height:none}
+  .intro{color:var(--slate);font-size:16px;max-width:760px;margin:28px auto 8px;border-left:3px solid var(--gold);padding-left:16px}
+  section.body{padding:22px 0 6px}
+  h2.sec{font-size:1.55rem;color:var(--navy);font-weight:800;margin:32px 0 14px;border-bottom:2px solid var(--gold);padding-bottom:8px;display:inline-block}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .card h3{font-size:1.28rem;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .card .csub{color:var(--muted);font-size:.85rem;font-weight:600;margin-bottom:14px}
+  p.lead{color:var(--slate);font-size:15.5px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .chip{background:#EEF3F8;color:var(--navy);border:1px solid #dbe6f0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+  ul.plain{list-style:none;margin-top:6px} ul.plain li{position:relative;padding-left:24px;margin-bottom:9px;color:var(--slate);font-size:15px}
+  ul.plain li:before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--gold);border-radius:3px;transform:rotate(45deg)}
+  ul.plain li b{color:var(--ink)}
+  .steps{list-style:none;counter-reset:s;margin-top:8px}
+  .steps li{counter-increment:s;position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 22px 18px 70px;margin-bottom:12px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .steps li:before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:17px;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem}
+  .steps li b{display:block;color:var(--navy);font-size:1.06rem;margin-bottom:3px}
+  .steps li span{color:var(--slate);font-size:15px}
+  .pull{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:28px 30px;margin:26px 0;position:relative;overflow:hidden}
+  .pull:after{content:"";position:absolute;left:-80px;bottom:-80px;width:250px;height:250px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .pull .q{font-size:1.35rem;font-weight:700;font-style:italic;color:#fff;position:relative}
+  .pull .a{color:var(--gold2);font-size:.9rem;font-weight:600;margin-top:10px;position:relative}
+  .callout{background:linear-gradient(120deg,rgba(176,141,62,.12),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:12px;padding:18px 20px;margin:18px 0}
+  .callout b{color:var(--navy)}
+  .seq{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;background:var(--navy2);border-radius:14px;padding:20px;margin:18px 0}
+  .seq span{color:#fff;font-weight:800;letter-spacing:.04em;font-size:1rem}
+  .seq i{color:var(--gold2);font-style:normal;font-weight:800}
+  .rolegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+  .role{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .role h4{color:var(--navy);font-size:1.02rem;margin-bottom:4px}
+  .role p{color:var(--slate);font-size:14.5px}
+  @media(max-width:640px){.rolegrid{grid-template-columns:1fr}header h1{font-size:32px}}
+  .final{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;text-align:center;border-radius:16px;padding:32px;margin:26px 0 6px;position:relative;overflow:hidden}
+  .final:after{content:"";position:absolute;left:-90px;bottom:-90px;width:280px;height:280px;border:2px solid rgba(176,141,62,.24);border-radius:50%}
+  .final h2{font-size:1.6rem;margin-bottom:10px;position:relative}
+  .final p{color:#D6E0EA;max-width:560px;margin:0 auto 22px;position:relative}
+  .final a.btn{position:relative;display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:14px 32px;border-radius:40px}
+  .final a.btn:hover{background:var(--gold2)}
+  footer{text-align:center;padding:30px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.card,.pull,.steps li{break-inside:avoid;box-shadow:none}header:after,.pull:after{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="home" href="index.html">&lsaquo; Back to agilebykillette.com</a>
+  <div class="eyebrow">A Coaching Perspective by Agile by Killette</div>
+  <h1>Agile Flexing: <span class="g">Naming It Without Naming Anyone</span></h1>
+  <div class="lede">When someone uses their Agile knowledge to stand above the team instead of lifting it, the team goes quiet. Here is why I air that in the retrospective, how I raise it without putting anyone on trial, and what changes when it comes from outside the team.</div>
+  <div class="tagline">From ceremony to ownership.</div>
+</div></header>
+<div class="wrap">
+<figure class="heroshot tall"><img src="hero-agile-flexing.jpg" alt="Agile Flexing infographic &mdash; flexing versus leadership, and coaching to cultivate curiosity"><figcaption>The goal isn&rsquo;t to be right. It&rsquo;s to do right by the team.</figcaption></figure>
+
+<p class="intro">I have had to raise this in a retrospective. It is not a comfortable conversation, and I have never enjoyed starting it. But a team that has gone quiet is a team that has already lost something, and the quiet does not fix itself. This is the pattern, why naming it is hard, and how I name it without putting anyone on trial.</p>
+
+<section class="body">
+
+<h2 class="sec">What Agile flexing looks like</h2>
+<p class="lead">Someone uses their Agile knowledge to appear relevant rather than to make the work better. The framework becomes a credential to wave instead of a tool to use. It rarely looks like hostility &mdash; more often it looks like correction. The right term, supplied. The article, cited. The reminder that this is not <i>really</i> Scrum.</p>
+<p class="lead">The tell is not what the person says. It is what happens to the room afterward.</p>
+<ul class="plain">
+<li><b>People stop offering half-formed ideas.</b> They wait until a thought is bulletproof, which means most thoughts never get said.</li>
+<li><b>Questions dry up.</b> Nobody wants to ask the thing that gets them corrected in front of their peers.</li>
+<li><b>The conversation narrows to the two most confident voices</b> while everyone else waits for it to end.</li>
+<li><b>The retro gets polite.</b> Nothing is wrong. Nothing is ever wrong.</li>
+</ul>
+<div class="callout"><b>Why this is not a soft problem.</b> "People stopped speaking up" is the working definition of low psychological safety &mdash; the condition every study of team performance treats as the precondition for everything else. It is also the first thing you lose and the last thing you get back. A team that has learned silence is expensive long after the person who taught it has moved on.</div>
+
+<h2 class="sec">The cost, in order</h2>
+<div class="seq"><span>SILENCE</span><i>&rarr;</i><span>NO CURIOSITY</span><i>&rarr;</i><span>NO LEARNING</span><i>&rarr;</i><span>NO OWNERSHIP</span></div>
+<p class="lead">It ends at ownership, which is the whole point of the work. A team that cannot say the uncomfortable thing in a retro cannot own its delivery either &mdash; because owning delivery means saying <i>we will not make that date</i> while there is still time to do something about it. Flexing trains a team out of exactly the muscle you need most.</p>
+
+<h2 class="sec">Why it is hard to raise</h2>
+<p class="lead">Every instinct you have is a trap. Name the person and you have made the retro a trial, and you have proven the room is unsafe in the act of complaining that it is unsafe. Say nothing and you have ratified it &mdash; the team now knows the person facilitating will not intervene, which is worse than saying nothing at all.</p>
+<p class="lead">There is a third option, and it is the only one that works: <b>name the effect, never the person.</b></p>
+
+<h2 class="sec">Why I air it in the retrospective</h2>
+<p class="lead">This is one of the main reasons I am such a strong advocate for retrospectives. Not because the ceremony is sacred &mdash; because it is the only room built for this.</p>
+<ul class="plain">
+<li><b>It is the one ceremony about how we work, not what we shipped.</b> Every other event on the calendar is about the product. This is the only one whose subject is the people doing the building.</li>
+<li><b>It is already on the cadence.</b> I never have to call a special meeting &mdash; and calling one would announce a crisis and make the whole thing about a person before anyone said a word.</li>
+<li><b>It is the team&rsquo;s room, not mine.</b> Raising something there is not an ambush. It is the venue they already own, on the schedule they already expect.</li>
+<li><b>The alternative is the hallway.</b> Anything I would say in a corridor I would rather say in a retro, because the hallway version turns into gossip and the retro version turns into an agreement.</li>
+</ul>
+<p class="lead"><b>The retrospective is where the team gets permission to say what needs to be said &mdash; regardless of where the behaviour comes from.</b> That is the whole reason I protect the ceremony as hard as I do.</p>
+<div class="callout"><b>And it doubles as a diagnostic.</b> If a thing genuinely cannot be raised in your retrospective, then the retrospective is not working yet &mdash; and that is the first problem to fix, before the flexing. A retro where nothing uncomfortable is ever said is not a healthy team. It is a quiet one.</div>
+
+<h2 class="sec">How I raise it in a retro</h2>
+<ol class="steps">
+<li><b>Prepare the ground before you need it.</b><span>The easiest time to have this conversation is before there is anyone to have it about. If the team agreement already says how we disagree and how we treat each other, you are pointing at a commitment the team made to itself &mdash; not at a person. Build that early, and this conversation is half-solved before it starts.</span></li>
+<li><b>Open on the effect, not the cause.</b><span>I ask a version of: <i>&ldquo;When in the last two weeks did you decide not to say something you were thinking?&rdquo;</i> Nobody is accused. Everybody has an answer. And the pattern surfaces itself, in the team&rsquo;s own words, without me having to allege anything.</span></li>
+<li><b>Let the silence do its work.</b><span>The first answer takes a while. Wait for it. If I fill the gap, I have taken the conversation back and the team learns that I will always fill it. The longest pause in the retro is usually the most useful thing in it.</span></li>
+<li><b>Narrow to the behaviour, not the biography.</b><span>&ldquo;What happened right before you decided not to say it?&rdquo; That question moves the room from feelings to a specific, observable moment &mdash; and a moment can be changed. A personality cannot.</span></li>
+<li><b>Close on a commitment the team writes.</b><span>Open the space, narrow the options, close on a decision. The output is not an apology, it is a line in the working agreement in the team&rsquo;s own language. They wrote it, so they enforce it &mdash; and I am no longer the one policing it.</span></li>
+<li><b>Handle the defensiveness privately, and without shame.</b><span>Someone usually recognises themselves. If they get defensive in the room, I do not press &mdash; winning that exchange costs more than it gains. I take it one-to-one afterward: never in shame, always <i>how can I help?</i> Most people flexing are not cruel. They are insecure about their standing and reaching for the only lever they trust.</span></li>
+<li><b>Come back to it once.</b><span>Two retros later I ask the same opening question again. If the answers have changed, the team hears its own progress. If they have not, the agreement was decoration and we work on it in the open.</span></li>
+</ol>
+
+<div class="pull"><div class="q">"Name the effect, never the person. A room can fix a pattern. A room put on trial only learns to stay quiet."</div></div>
+
+<h2 class="sec">Inside the team, or outside it</h2>
+<p class="lead">The flex does not always come from a teammate. Just as often it arrives from outside the room &mdash; a stakeholder in the review, a manager who drops into standup, a coach from another train, an executive who has just finished a book. I air both in the retro. I handle them completely differently.</p>
+<div class="rolegrid">
+  <div class="role"><h4>From inside the team</h4><p>The team can own this. We surface the effect, we agree what we want instead, and it lands in the working agreement in their words. They wrote it, so they hold each other to it. My job after that is to stay out of the way.</p></div>
+  <div class="role"><h4>From outside the team</h4><p>The team cannot own this, and I do not ask them to. Sending a developer to confront a director is not coaching &mdash; it is abdication dressed up as empowerment. That conversation is mine.</p></div>
+</div>
+<p class="lead" style="margin-top:16px">When it comes from outside, I take it out of the room and have the conversation myself, one-to-one, with the person or with their leader. Never in shame. Most of the time they have no idea what their presence costs &mdash; they think they are being helpful, or engaged, or rigorous. Told plainly and privately, most people adjust.</p>
+<ul class="plain">
+<li><b>I tell the team it is handled.</b> Not the details &mdash; the fact. If the team raises something and never hears what came of it, they stop raising things, and I have taught them the retro is theatre.</li>
+<li><b>If I cannot fix it, I say so.</b> Honestly, and then we change what we do control &mdash; who attends which session, how a review is structured, what gets pre-socialised so nobody is corrected in front of their peers.</li>
+<li><b>I never trade the team&rsquo;s name for my own standing.</b> The escalation carries my name on it, not theirs.</li>
+</ul>
+<div class="callout"><b>This is what protection actually means.</b> Not shielding a team from accountability &mdash; they should own their delivery entirely. Shielding them from having to fight battles that are mine to fight. I am the protector of the team. That is not a slogan on a slide; it is the reason I am willing to be the one who says the uncomfortable thing out loud.</div>
+
+<h2 class="sec">Flexing versus leadership</h2>
+<p class="lead">The distinction is not how much you know. It is what the knowing is <i>for</i>.</p>
+<div class="rolegrid">
+  <div class="role"><h4>Flexing</h4><p>Flaunts knowledge &middot; belittles &middot; promotes self &middot; loses trust &middot; kills curiosity &middot; weakens teams.</p></div>
+  <div class="role"><h4>Leadership</h4><p>Collaborates &middot; mentors &middot; cultivates others &middot; sparks curiosity &middot; builds trust &middot; strengthens teams.</p></div>
+</div>
+<p class="lead" style="margin-top:16px">Same expertise. Opposite direction. One spends knowledge on standing, the other invests it in people &mdash; and only one of those compounds.</p>
+
+<h2 class="sec">How I handle it &mdash; five moves</h2>
+<p class="lead">Protect the team. Surface the truth. Coach the behaviour. Everything above reduces to these five, in this order.</p>
+<ol class="steps">
+<li><b>Notice.</b><span>Recognise the moment knowledge stops being useful and starts being performance or intimidation. The signal is never the sentence &mdash; it is the room going quiet after it.</span></li>
+<li><b>Surface.</b><span>Bring the behaviour into the retrospective when it affects the team &mdash; whether it came from inside the team or from outside it. Name the effect, never the person.</span></li>
+<li><b>Coach.</b><span>Challenge the behaviour without diminishing the person. Most people flexing are not cruel; they are insecure about their standing and reaching for the only lever they trust. Take it privately, never in shame.</span></li>
+<li><b>Protect.</b><span>Create and defend a space where people can speak, question, learn, and disagree safely. When the behaviour comes from outside the team, the escalation is mine and it carries my name, not theirs.</span></li>
+<li><b>Cultivate.</b><span>Turn individual expertise into team capability, curiosity, and ownership. The point was never to make the expert smaller. It is to make everyone else larger.</span></li>
+</ol>
+<div class="callout"><b>I am the protector of the team.</b> I shield the team from ego, intimidation, and the behaviours that quietly undermine trust and delivery. Not from accountability &mdash; they own their delivery entirely &mdash; but from the things that have nothing to do with the work and everything to do with someone else&rsquo;s standing.</div>
+
+<div class="pull"><div class="q">"The goal isn&rsquo;t to be right. It&rsquo;s to do right by the team."</div></div>
+
+<h2 class="sec">The honest part</h2>
+<p class="lead">I am not writing this from a position of never having been in the room where it happened. I am writing it as the person who was responsible for the room and had to decide whether to say something. Both choices cost you. Saying nothing costs the team more.</p>
+<p class="lead">A team that watches its Scrum Master notice something and stay quiet learns exactly what that silence is worth. So I raise it &mdash; in the retro, on the cadence, naming the effect and never the person &mdash; whether it came from inside the team or landed on them from outside. That is the job.</p>
+<p class="lead">Knowledge is a tool. Ego is noise. Leadership builds others. Agile is not a performance &mdash; it is a practice, and the point of knowing more than the people around you is to <b>lift them, not to stand above them.</b> The goal was never to be the one who was right. It was to do right by the team.</p>
+</section>
+
+<div class="final">
+  <h2>Has your team gone quiet?</h2>
+  <p>If retros have turned polite and nobody raises the hard thing anymore, that is fixable &mdash; but not by adding another ceremony. Let's talk about what your team stopped saying.</p>
+  <a class="btn" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation &rarr;</a>
+</div>
+
+</div>
+<footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette &middot; Agile Coach &middot; Scrum Master &middot; RTE &middot; PMP-trained PM &middot; wendell@agilebykillette.com &middot; 469-774-2233</div></div></footer>
+</body>
+</html>

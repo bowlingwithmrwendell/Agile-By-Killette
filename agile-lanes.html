@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Agile Lanes — A Framework by Agile by Killette</title>
+<meta name="description" content="The Agile Lanes: a framework for seeing which lane your organisation is really in, and what to do about it.">
+<link rel="canonical" href="https://agilebykillette.com/agile-lanes.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="The Agile Lanes — A Framework by Agile by Killette">
+<meta property="og:description" content="The Agile Lanes: a framework for seeing which lane your organisation is really in, and what to do about it.">
+<meta property="og:url" content="https://agilebykillette.com/agile-lanes.html">
+<meta property="og:image" content="https://agilebykillette.com/og-agile-lanes.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Agile Lanes — A Framework by Agile by Killette">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Agile Lanes — A Framework by Agile by Killette">
+<meta name="twitter:description" content="The Agile Lanes: a framework for seeing which lane your organisation is really in, and what to do about it.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-agile-lanes.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:52px 0 46px;text-align:center;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.25);border-radius:50%}
+  .eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:14px}
+  header h1{font-size:52px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+  header h1 .by{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:640px;margin:8px auto 0}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:16px;font-size:16px}
+  .intro{text-align:center;color:var(--slate);font-size:16px;max-width:720px;margin:34px auto 8px}
+  .lanes{padding:26px 0 10px}
+  .lane{display:flex;gap:22px;padding:26px 24px;background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:16px;position:relative;box-shadow:0 6px 20px rgba(21,42,64,.05)}
+  .lane.core{border-color:var(--gold);box-shadow:0 8px 26px rgba(176,141,62,.16)}
+  .lane-id{flex:0 0 84px;display:flex;flex-direction:column;align-items:center;gap:10px;border-right:2px dashed #d9c393;padding-right:18px}
+  .lane-id .num{width:52px;height:52px;border-radius:50%;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800}
+  .lane.core .lane-id .num{background:var(--gold);color:#fff}
+  .lane-id .icon{font-size:26px}
+  .lane-body{flex:1}
+  .lane-head{display:flex;flex-direction:column;margin-bottom:12px}
+  .lane-head h3{font-size:22px;color:var(--navy);font-weight:800;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .lane-sub{color:var(--muted);font-size:14px;font-weight:600;margin-top:2px}
+  .core-badge{background:var(--gold);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .chip{background:#EEF3F8;color:var(--navy);border:1px solid #dbe6f0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+  .lane.core .chip{background:#FBF4E4;border-color:#ecdcb4}
+  .why{color:var(--slate);font-style:italic;font-size:14.5px;border-left:3px solid var(--gold);padding-left:12px}
+  footer{text-align:center;padding:34px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.lane{break-inside:avoid;box-shadow:none}header:after{display:none}}
+  @media(max-width:640px){header h1{font-size:36px}.lane{flex-direction:column;gap:14px}.lane-id{flex-direction:row;border-right:0;border-bottom:2px dashed #d9c393;padding-right:0;padding-bottom:12px;justify-content:flex-start}}
+</style></head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">A Delivery Framework by Agile by Killette</div>
+      <h1>The Agile <span class="by">Lanes</span></h1>
+      <div class="lede">Six lanes. One outcome — measurable delivery. Every engagement runs only in the lanes your organization actually needs, from day-to-day execution to enterprise strategy.</div>
+      <div class="tagline">From ceremony to ownership.</div>
+    </div>
+  </header>
+  <div class="wrap">
+    <p class="intro">Agile isn’t one job — it’s a system of lanes that have to move together. Here’s how I map an engagement, so leaders can see exactly where I’m driving value and stay confident nothing’s drifting.</p>
+    <div class="lanes">
+      
+    <div class="lane core">
+      <div class="lane-id">
+        <div class="num">1</div>
+        <div class="icon">🧭</div>
+      </div>
+      <div class="lane-body">
+        <div class="lane-head"><h3>Delivery Lanes <span class="core-badge">Core strength</span></h3><div class="lane-sub">Core Execution</div></div>
+        <div class="chips"><span class="chip">Sprint Planning & Execution</span><span class="chip">Backlog Management</span><span class="chip">Scrum Ceremonies</span><span class="chip">UAT & Release Readiness</span><span class="chip">Value Stream Delivery</span></div>
+        <div class="why">The heartbeat of Agile — where work actually gets built and shipped. Your strongest lane: multi-industry value stream delivery.</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-id">
+        <div class="num">2</div>
+        <div class="icon">🔄</div>
+      </div>
+      <div class="lane-body">
+        <div class="lane-head"><h3>Governance & Alignment </h3><div class="lane-sub">Keeping the program on course</div></div>
+        <div class="chips"><span class="chip">PI Planning</span><span class="chip">Roadmapping & Portfolio Management</span><span class="chip">Risk & Issue Management</span><span class="chip">RACI & Decision Governance</span><span class="chip">Dependency Management</span><span class="chip">Budgeting & Capacity Planning</span></div>
+        <div class="why">Keeps leadership confident that Agile isn’t chaos.</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-id">
+        <div class="num">3</div>
+        <div class="icon">🧩</div>
+      </div>
+      <div class="lane-body">
+        <div class="lane-head"><h3>Coaching & Enablement </h3><div class="lane-sub">People, culture & capability</div></div>
+        <div class="chips"><span class="chip">Agile Coaching (Team + Enterprise)</span><span class="chip">Scrum Master Enablement</span><span class="chip">Product Owner Coaching</span><span class="chip">Training & Workshops</span><span class="chip">Agile Maturity Assessments</span><span class="chip">Change Management & Adoption</span></div>
+        <div class="why">Where transformation actually sticks.</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-id">
+        <div class="num">4</div>
+        <div class="icon">⚙️</div>
+      </div>
+      <div class="lane-body">
+        <div class="lane-head"><h3>Technical Agility </h3><div class="lane-sub">Engineering excellence</div></div>
+        <div class="chips"><span class="chip">DevOps & CI/CD</span><span class="chip">Automation (Testing, Deployment)</span><span class="chip">Architecture & Technical Governance</span><span class="chip">Quality Engineering</span><span class="chip">Security & Compliance Integration</span></div>
+        <div class="why">Ensures Agile isn’t slowed down by tech debt or manual processes.</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-id">
+        <div class="num">5</div>
+        <div class="icon">📊</div>
+      </div>
+      <div class="lane-body">
+        <div class="lane-head"><h3>Measurement & Optimization </h3><div class="lane-sub">Proving it works</div></div>
+        <div class="chips"><span class="chip">Flow Metrics (Cycle Time, WIP, Throughput)</span><span class="chip">Team Health Metrics</span><span class="chip">Value Realization Tracking</span><span class="chip">OKRs & Outcome Measurement</span><span class="chip">Continuous Improvement Loops</span></div>
+        <div class="why">Agile without metrics is just opinions — this lane makes it real.</div>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="lane-id">
+        <div class="num">6</div>
+        <div class="icon">🧠</div>
+      </div>
+      <div class="lane-body">
+        <div class="lane-head"><h3>Leadership & Strategy </h3><div class="lane-sub">Steering the ship</div></div>
+        <div class="chips"><span class="chip">Agile Leadership Coaching</span><span class="chip">Organizational Design for Agility</span><span class="chip">Strategic Prioritization</span><span class="chip">Culture & Mindset Shifts</span><span class="chip">Executive Reporting & Communication</span></div>
+        <div class="why">Often the difference between Agile adoption and Agile transformation.</div>
+      </div>
+    </div>
+    <div class="lane core">
+      <div class="lane-id">
+        <div class="num">7</div>
+        <div class="icon">🤝</div>
+      </div>
+      <div class="lane-body">
+        <div class="lane-head"><h3>People, Not Resources <span class="core-badge">The foundation</span></h3><div class="lane-sub">Dev Family, not Dev Team</div></div>
+        <div class="chips"><span class="chip">People, not resources</span><span class="chip">Psychological safety</span><span class="chip">Belonging &amp; shared ownership</span><span class="chip">Individual growth</span><span class="chip">Sustainable pace</span><span class="chip">Celebrate the wins</span></div>
+        <div class="why">The human foundation beneath every other lane — and what makes the metrics hold long after I'm gone. &ldquo;I build a Dev Family, not a Dev Team.&rdquo;</div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <div class="brand">Agile by Killette</div>
+      <div class="tag">From ceremony to ownership.</div>
+      <div class="contact">Wendell Killette · Agile Coach · Scrum Master · RTE · PMP-trained PM · wendell@agilebykillette.com · 469-774-2233</div>
+    </div>
+  </footer>
+</body></html>

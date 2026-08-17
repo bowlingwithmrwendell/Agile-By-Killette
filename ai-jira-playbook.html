@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI + Jira Playbook — Agile by Killette</title>
+<meta name="description" content="The AI + Jira playbook: practical JQL, automation and AI-assisted patterns for keeping a backlog honest.">
+<link rel="canonical" href="https://agilebykillette.com/ai-jira-playbook.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="The AI + Jira Playbook">
+<meta property="og:description" content="The AI + Jira playbook: practical JQL, automation and AI-assisted patterns for keeping a backlog honest.">
+<meta property="og:url" content="https://agilebykillette.com/ai-jira-playbook.html">
+<meta property="og:image" content="https://agilebykillette.com/og-ai-jira-playbook.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The AI + Jira Playbook">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AI + Jira Playbook">
+<meta name="twitter:description" content="The AI + Jira playbook: practical JQL, automation and AI-assisted patterns for keeping a backlog honest.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-ai-jira-playbook.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--code:#0F2537;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:52px 0 46px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.26em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:44px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+  header h1 .plus{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:640px}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:16px;font-size:15px}
+  .intro{color:var(--slate);font-size:15.5px;max-width:760px;margin:30px auto 6px;border-left:3px solid var(--gold);padding-left:16px}
+  .cats{padding:24px 0 6px}
+  .cat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 26px 22px;margin-bottom:20px;box-shadow:0 6px 20px rgba(21,42,64,.05)}
+  .cat-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .cat-ico{font-size:1.9rem}
+  .cat-head h3{font-size:1.4rem;color:var(--navy);font-weight:800}
+  .cat-sub{color:var(--muted);font-size:.86rem;font-weight:600}
+  .q{margin-bottom:14px}
+  .q code{display:block;background:var(--code);color:#E8F0F7;font-family:'Consolas','SF Mono',Menlo,monospace;font-size:13.5px;
+    padding:12px 15px;border-radius:9px;border-left:3px solid var(--gold2);overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+  .surf{color:var(--slate);font-size:14px;margin-top:7px;padding-left:3px}
+  .ai{margin-top:18px;background:linear-gradient(120deg,rgba(176,141,62,.10),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:11px;padding:16px 18px}
+  .ai-tag{font-weight:800;color:var(--navy);font-size:.9rem;letter-spacing:.01em}
+  .ai p{color:var(--slate);font-size:14.5px;margin-top:7px}
+  .ai em{color:var(--navy);font-style:italic;font-weight:600}
+  .govern{background:var(--navy);color:#fff;border-radius:16px;padding:26px 28px;margin:8px 0 30px;position:relative}
+  .govern h3{color:var(--gold2);font-size:1.15rem;margin-bottom:8px}
+  .govern p{color:#D6E0EA;font-size:15px}
+  footer{text-align:center;padding:32px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.cat,.govern{break-inside:avoid;box-shadow:none}header:after{display:none}}
+</style></head>
+<body>
+  <header><div class="wrap">
+    <div class="eyebrow">A Practical Guide by Agile by Killette</div>
+    <h1>The AI <span class="plus">+</span> Jira Playbook</h1>
+    <div class="lede">How I turn Jira queries into delivery insight — and put AI to work doing the heavy lifting.</div>
+    <div class="tagline">From ceremony to ownership.</div>
+  </div></header>
+  <div class="wrap">
+    <p class="intro">Metrics without visibility are just noise. These are the kinds of Jira queries I use to keep an ART honest — paired with how AI turns raw results into the story leaders actually need. (JQL examples; adapt field names to your instance. A few cross-team queries assume standard link types or Jira Align.)</p>
+    <div class="cats">
+      
+    <div class="cat">
+      <div class="cat-head"><span class="cat-ico">🔗</span><div><h3>Dependencies &amp; Blockers</h3><div class="cat-sub">Across the ART</div></div></div>
+      <div class="queries"><div class="q"><code>status = Blocked AND updated &lt;= -5d ORDER BY updated ASC</code><div class="surf">Blockers stuck 5+ days — the ones quietly rotting while everyone assumes they're handled.</div></div>
+<div class="q"><code>Flagged is not EMPTY AND resolution = Unresolved</code><div class="surf">Every open impediment that's been flagged, across all teams, in one list.</div></div>
+<div class="q"><code>issue in linkedIssues(&quot;PROJ-123&quot;, &quot;is blocked by&quot;)</code><div class="surf">Everything blocking a specific critical feature — the dependency chain, made visible.</div></div>
+</div>
+      <div class="ai"><span class="ai-tag">🤖 How AI assists</span><p>Ask AI in plain English — <em>“show every blocker older than a week across Teams A–C”</em> — and it writes the JQL for you. Then paste the export back and ask it to <em>group by owning team and name the dependency causing the most downstream blockage.</em> In seconds you get the story that PI Planning usually needs a room and a wall of sticky notes to uncover.</p></div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head"><span class="cat-ico">📈</span><div><h3>Flow &amp; Predictability</h3><div class="cat-sub">Is work actually moving?</div></div></div>
+      <div class="queries"><div class="q"><code>sprint in openSprints() AND status not in (Done, Closed)</code><div class="surf">What's still open in the current sprint — your carryover risk, live, not at the retro.</div></div>
+<div class="q"><code>status = &quot;In Progress&quot; AND updated &lt;= -3d ORDER BY updated ASC</code><div class="surf">Aging work-in-progress — items that started but stalled and are silently blowing your cycle time.</div></div>
+<div class="q"><code>status changed to Done during (-14d, now())</code><div class="surf">Throughput over the last two weeks — the raw material for a trend.</div></div>
+</div>
+      <div class="ai"><span class="ai-tag">🤖 How AI assists</span><p>JQL pulls the items, but it can't compute cycle time or spot a trend on its own. Feed the results to AI (or a Copilot-connected dashboard) and ask it to <em>calculate average cycle time, flag WIP above the limit, and name the two stories most likely to carry over.</em> That turns a flat list into a forecast — the shift that took teams from 70% to 92% predictability.</p></div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head"><span class="cat-ico">🎯</span><div><h3>Scope &amp; Commitment</h3><div class="cat-sub">The Say/Do story</div></div></div>
+      <div class="queries"><div class="q"><code>sprint in openSprints() AND type = Story AND &quot;Story Points&quot; is EMPTY</code><div class="surf">Unestimated stories that snuck into the sprint without a size — hidden risk.</div></div>
+<div class="q"><code>sprint in openSprints() AND created &gt;= -5d</code><div class="surf">Work added after sprint start — scope creep, made visible instead of absorbed silently.</div></div>
+</div>
+      <div class="ai"><span class="ai-tag">🤖 How AI assists</span><p>Point AI at the sprint's planned-vs-current scope and it drafts your <em>Say/Do narrative</em>: what was committed, what changed mid-sprint, and the trade-off conversation that should have happened. That's the exact insight that turns a missed sprint into a productive leadership discussion.</p></div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head"><span class="cat-ico">⚠️</span><div><h3>Risk &amp; Readiness</h3><div class="cat-sub">What's about to bite</div></div></div>
+      <div class="queries"><div class="q"><code>priority in (Highest, High) AND resolution = Unresolved AND updated &lt;= -7d</code><div class="surf">High-priority items going stale — the fires forming while attention is elsewhere.</div></div>
+<div class="q"><code>status = &quot;In Progress&quot; AND assignee is EMPTY</code><div class="surf">Work in flight that nobody actually owns.</div></div>
+<div class="q"><code>type = Bug AND resolution = Unresolved AND created &lt;= -14d ORDER BY priority DESC</code><div class="surf">Aging bugs, worst first — quality debt with a countdown.</div></div>
+</div>
+      <div class="ai"><span class="ai-tag">🤖 How AI assists</span><p>Ask AI to triage the list into a <em>Green / Yellow / Red view</em> with a one-line “why” and a suggested mitigation for each item. That's your health report — pre-drafted, defensible, and ready before the leadership sync instead of scrambled the night before.</p></div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head"><span class="cat-ico">🚆</span><div><h3>ART / PI Health</h3><div class="cat-sub">The whole train at a glance</div></div></div>
+      <div class="queries"><div class="q"><code>project in (TEAMA, TEAMB, TEAMC) AND status = Blocked</code><div class="surf">Every blocker across the entire train in one view — no team's problem hides.</div></div>
+<div class="q"><code>type = Feature AND &quot;Program Increment&quot; = &quot;PI-2026.3&quot; AND resolution = Unresolved</code><div class="surf">Feature progress for the current PI, across all teams.</div></div>
+</div>
+      <div class="ai"><span class="ai-tag">🤖 How AI assists</span><p>Across a 15–17 person train, AI turns these cross-project queries into a single <em>PI health summary</em> — features at risk, the dependency web, and the one or two threads that could derail the increment — refreshed continuously instead of hand-assembled every Friday.</p></div>
+    </div>
+    </div>
+    <div class="govern">
+      <h3>🔒 One rule I never break</h3>
+      <p>In regulated environments, sensitive or client data never goes into public AI tools. I use enterprise Copilot with proper data governance and access controls — responsible AI is part of the delivery, not an afterthought. That's how you get the speed of AI without the audit risk.</p>
+    </div>
+  </div>
+  <footer><div class="wrap">
+    <div class="brand">Agile by Killette</div>
+    <div class="tag">From ceremony to ownership.</div>
+    <div class="contact">Wendell Killette · Agile Coach · Scrum Master · RTE · PMP-trained PM · wendell@agilebykillette.com · 469-774-2233</div>
+  </div></footer>
+</body></html>

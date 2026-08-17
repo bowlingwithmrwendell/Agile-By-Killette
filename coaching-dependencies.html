@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching the Web of Dependencies &mdash; Agile by Killette</title>
+<meta name="description" content="Dependencies are where delivery quietly dies. Seven coaching moves to make them visible, owned and designed down — plus the SEE IT / OWN IT / REMOVE IT loop.">
+<link rel="canonical" href="https://agilebykillette.com/coaching-dependencies.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Coaching the Web of Dependencies">
+<meta property="og:description" content="Dependencies are where delivery quietly dies. Seven coaching moves to make them visible, owned and designed down — plus the SEE IT / OWN IT / REMOVE IT loop.">
+<meta property="og:url" content="https://agilebykillette.com/coaching-dependencies.html">
+<meta property="og:image" content="https://agilebykillette.com/og-coaching-dependencies.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Coaching the Web of Dependencies">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coaching the Web of Dependencies">
+<meta name="twitter:description" content="Dependencies are where delivery quietly dies. Seven coaching moves to make them visible, owned and designed down — plus the SEE IT / OWN IT / REMOVE IT loop.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-coaching-dependencies.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--green:#2E7D57;--red:#B4483C;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  .home{display:inline-block;color:var(--gold2);font-weight:600;font-size:.92rem;margin-bottom:18px}
+  .home:hover{color:#fff}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:46px 0 44px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:42px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px;max-width:24ch;position:relative}
+  header h1 .g{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:660px;position:relative}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:14px;font-size:14.5px;position:relative}
+  .heroshot{margin:26px 0 4px;border-radius:16px;overflow:hidden;box-shadow:0 14px 38px rgba(21,42,64,.16);border:1px solid var(--line);background:#fff}
+  .heroshot img{width:100%;display:block}
+  .heroshot figcaption{font-size:13.5px;color:var(--muted);padding:12px 16px;text-align:center;font-style:italic}
+  .heroshot.tall img{max-height:none}
+  .intro{color:var(--slate);font-size:16px;max-width:760px;margin:28px auto 8px;border-left:3px solid var(--gold);padding-left:16px}
+  section.body{padding:22px 0 6px}
+  h2.sec{font-size:1.55rem;color:var(--navy);font-weight:800;margin:32px 0 14px;border-bottom:2px solid var(--gold);padding-bottom:8px;display:inline-block}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .card h3{font-size:1.28rem;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .card .csub{color:var(--muted);font-size:.85rem;font-weight:600;margin-bottom:14px}
+  p.lead{color:var(--slate);font-size:15.5px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .chip{background:#EEF3F8;color:var(--navy);border:1px solid #dbe6f0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+  ul.plain{list-style:none;margin-top:6px} ul.plain li{position:relative;padding-left:24px;margin-bottom:9px;color:var(--slate);font-size:15px}
+  ul.plain li:before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--gold);border-radius:3px;transform:rotate(45deg)}
+  ul.plain li b{color:var(--ink)}
+  .steps{list-style:none;counter-reset:s;margin-top:8px}
+  .steps li{counter-increment:s;position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 22px 18px 70px;margin-bottom:12px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .steps li:before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:17px;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem}
+  .steps li b{display:block;color:var(--navy);font-size:1.06rem;margin-bottom:3px}
+  .steps li span{color:var(--slate);font-size:15px}
+  .pull{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:28px 30px;margin:26px 0;position:relative;overflow:hidden}
+  .pull:after{content:"";position:absolute;left:-80px;bottom:-80px;width:250px;height:250px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .pull .q{font-size:1.35rem;font-weight:700;font-style:italic;color:#fff;position:relative}
+  .pull .a{color:var(--gold2);font-size:.9rem;font-weight:600;margin-top:10px;position:relative}
+  .callout{background:linear-gradient(120deg,rgba(176,141,62,.12),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:12px;padding:18px 20px;margin:18px 0}
+  .callout b{color:var(--navy)}
+  .seq{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;background:var(--navy2);border-radius:14px;padding:20px;margin:18px 0}
+  .seq span{color:#fff;font-weight:800;letter-spacing:.04em;font-size:1rem}
+  .seq i{color:var(--gold2);font-style:normal;font-weight:800}
+  .rolegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+  .role{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .role h4{color:var(--navy);font-size:1.02rem;margin-bottom:4px}
+  .role p{color:var(--slate);font-size:14.5px}
+  @media(max-width:640px){.rolegrid{grid-template-columns:1fr}header h1{font-size:32px}}
+  .final{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;text-align:center;border-radius:16px;padding:32px;margin:26px 0 6px;position:relative;overflow:hidden}
+  .final:after{content:"";position:absolute;left:-90px;bottom:-90px;width:280px;height:280px;border:2px solid rgba(176,141,62,.24);border-radius:50%}
+  .final h2{font-size:1.6rem;margin-bottom:10px;position:relative}
+  .final p{color:#D6E0EA;max-width:560px;margin:0 auto 22px;position:relative}
+  .final a.btn{position:relative;display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:14px 32px;border-radius:40px}
+  .final a.btn:hover{background:var(--gold2)}
+  footer{text-align:center;padding:30px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.card,.pull,.steps li{break-inside:avoid;box-shadow:none}header:after,.pull:after{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="home" href="index.html">&lsaquo; Back to agilebykillette.com</a>
+  <div class="eyebrow">A Coaching Perspective by Agile by Killette</div>
+  <h1>Coaching the Web of <span class="g">Dependencies</span></h1>
+  <div class="lede">Dependencies are where delivery quietly dies. You don't manage that on a spreadsheet &mdash; you coach it.</div>
+  <div class="tagline">From ceremony to ownership.</div>
+</div></header>
+<div class="wrap">
+<figure class="heroshot tall"><img src="hero-dependencies.jpg" alt="Infographic: Why tracking dependencies isn't optional &mdash; it's essential"></figure>
+
+<p class="intro">Dependencies are where delivery quietly dies. Not in the standup, not on the burndown &mdash; in the gap between two teams who each assumed the other had it. You don't manage that on a spreadsheet. You coach it.</p>
+<section class="body">
+
+<h2 class="sec">Why this is the highest-leverage habit I coach</h2>
+<p class="lead">In complex environments, no team delivers in isolation. Every feature, fix, and improvement touches something &mdash; or someone &mdash; else. Dependencies are the invisible threads connecting people, teams, systems, and timing. Ignore them and you get late releases, rework, frustrated teams, and missed outcomes. Track them well and you unlock flow, alignment, predictability, and trust.</p>
+<div class="callout"><b>What it costs when we don't:</b> delays multiply (small waits cascade into big slips) &middot; surprises increase (unseen dependencies become roadblocks) &middot; teams feel stuck (context switching kills momentum) &middot; cost goes up (rework, overtime, expedited fixes) &middot; trust goes down (missed commitments erode confidence).</div>
+
+<h2 class="sec">The seven coaching moves</h2>
+<ol class="steps">
+<li><b>Make them visible.</b><span>One shared board &mdash; a program board, a dependency wall, whatever the org will actually look at &mdash; before they surprise you. Out of sight becomes out of control.</span></li>
+<li><b>Map them early.</b><span>In refinement and PI planning, not mid-sprint. Early visibility creates options; late discovery creates chaos.</span></li>
+<li><b>Give each one an owner.</b><span>Who owes what to whom, and by when. A dependency without a name attached doesn't move.</span></li>
+<li><b>Broker team to team.</b><span>Coach the conversation directly between the teams. Don't relay it through managers &mdash; every hop adds delay and drops context.</span></li>
+<li><b>Sequence across the train.</b><span>Order the work so no team sits waiting or builds something twice. This is most of what an RTE actually does.</span></li>
+<li><b>Design them down.</b><span>Cross-functional, value-aligned teams that own more end to end. The best dependency is the one that no longer exists.</span></li>
+<li><b>ROAM the risk.</b><span>Resolved, Owned, Accepted, or Mitigated. None left silent. A dependency with no ROAM status is a countdown nobody's watching.</span></li>
+</ol>
+
+<div class="pull"><div class="q">"A dependency you can see is a conversation. A dependency you can't is a missed date with a countdown you didn't know was running."</div></div>
+
+<h2 class="sec">The dependency loop</h2>
+<div class="seq"><span>SEE IT</span><i>&rarr;</i><span>OWN IT</span><i>&rarr;</i><span>TALK ABOUT IT</span><i>&rarr;</i><span>TRACK IT</span><i>&rarr;</i><span>REMOVE IT</span></div>
+<p class="lead">See it (make it visible) &middot; own it (assign and align) &middot; talk about it (communicate early and often) &middot; track it (monitor and adapt) &middot; remove it (unblock and keep flowing). Then round again &mdash; because the web changes every increment.</p>
+
+<h2 class="sec">The part that's actually hard</h2>
+<p class="lead">Anyone can keep a dependency log. The hard part is getting teams to <b>own</b> their dependencies &mdash; to walk across the org chart and have the conversation before the date slips. That's culture, and culture is coached, not configured. It's the same move as everything else I do: from ceremony to ownership, even across the org chart.</p>
+<div class="callout"><b>Escalation is a service, not a threat.</b> I coach teams to escalate early and I clear the organizational roadblocks myself. Your job as a leader is to clear the path &mdash; not to add to the traffic.</div>
+
+<h2 class="sec">Where this shows up in delivery</h2>
+<ul class="plain">
+<li><b>PI Planning &amp; the program board.</b> Dependencies get drawn, owned, and sequenced in the room, while changing them is still cheap.</li>
+<li><b>Refinement.</b> "What does this touch?" is a refinement question, not a sprint-day discovery.</li>
+<li><b>Flow metrics.</b> Blocked time and wait time tell you what the log won't &mdash; where the web is actually pulling.</li>
+<li><b>Vendor and platform work.</b> The dependencies that hurt most are usually the ones outside your train entirely.</li>
+<li><b>Release readiness.</b> Integration, environments, and test data are dependencies too &mdash; and they're the ones that bite at go/no-go.</li>
+</ul>
+<p class="lead" style="margin-top:16px">Great teams deliver. Aligned teams deliver greater value. <b>Connected teams change the game.</b></p>
+<div class="callout">This is one of the seven moves inside a bigger accountability: someone has to own delivery landing across every team. That's the <a href="delivery-management.html" style="color:var(--navy);font-weight:700;border-bottom:2px solid var(--gold)">Delivery Manager</a> role &mdash; and clearing the dependencies is a core part of it.</div>
+</section>
+<div class="final"><h2>Dependencies eating your dates?</h2><p>If your teams keep discovering each other mid-sprint, this is fixable &mdash; and faster than you'd think. Let's look at your program board together.</p><a class="btn" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation &rarr;</a></div>
+</div>
+<footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette &middot; Agile Coach &middot; Scrum Master &middot; RTE &middot; PMP-trained PM &middot; wendell@agilebykillette.com &middot; 469-774-2233</div></div></footer>
+</body>
+</html>

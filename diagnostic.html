@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Agile Lanes Diagnostic — Agile by Killette</title>
+<meta name="description" content="The Agile Lanes Diagnostic — a short assessment to find which lane your teams are running in today.">
+<link rel="canonical" href="https://agilebykillette.com/diagnostic.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="The Agile Lanes Diagnostic">
+<meta property="og:description" content="The Agile Lanes Diagnostic — a short assessment to find which lane your teams are running in today.">
+<meta property="og:url" content="https://agilebykillette.com/diagnostic.html">
+<meta property="og:image" content="https://agilebykillette.com/og-diagnostic.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Agile Lanes Diagnostic">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Agile Lanes Diagnostic">
+<meta name="twitter:description" content="The Agile Lanes Diagnostic — a short assessment to find which lane your teams are running in today.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-diagnostic.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;
+    --green:#2E7D57;--amber:#B6862B;--red:#B4483C;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:48px 0 42px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-110px;top:-110px;width:340px;height:340px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:40px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+  header .lede{color:#D6E0EA;font-size:17px;max-width:600px}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:14px;font-size:14.5px}
+  .quiz{padding:30px 0 10px}
+  .qcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;margin-bottom:16px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .qtop{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+  .qlane{flex:0 0 auto;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);
+    background:#FBF4E4;border:1px solid #ecdcb4;border-radius:20px;padding:4px 10px;white-space:nowrap}
+  .qtext{font-size:1.06rem;font-weight:600;color:var(--navy)}
+  .opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt label{display:block;text-align:center;padding:10px 6px;border:1.5px solid var(--line);border-radius:10px;font-size:.86rem;
+    font-weight:600;color:var(--slate);cursor:pointer;transition:.15s;user-select:none}
+  .opt label:hover{border-color:var(--gold2);background:#FCFAF3}
+  .opt input:checked + label{background:var(--navy);border-color:var(--navy);color:#fff}
+  @media(max-width:560px){.opts{grid-template-columns:repeat(2,1fr)}}
+  .cta-row{text-align:center;margin:26px 0 8px}
+  .btn{display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:15px 40px;border:none;border-radius:40px;
+    font-size:1.05rem;cursor:pointer;transition:.2s;font-family:inherit}
+  .btn:hover{background:var(--gold2);transform:translateY(-1px)}
+  .warn{color:var(--red);font-size:.9rem;margin-top:12px;min-height:1.2em;font-weight:600}
+  /* results */
+  #results{display:none;padding:6px 0 40px}
+  #results.show{display:block}
+  .rbanner{border-radius:16px;padding:26px 28px;color:#fff;margin-bottom:22px;position:relative;overflow:hidden}
+  .rbanner h2{font-size:1.7rem;margin-bottom:6px}
+  .rbanner .score{font-size:3rem;font-weight:800;line-height:1;margin-bottom:8px}
+  .rbanner p{opacity:.95;font-size:15px;max-width:560px}
+  .rband-green{background:linear-gradient(135deg,#2E7D57,#215C40)}
+  .rband-amber{background:linear-gradient(135deg,#B6862B,#8A6414)}
+  .rband-red{background:linear-gradient(135deg,#B4483C,#8A342B)}
+  .rsec-title{font-size:.8rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:24px 0 12px}
+  .lresult{background:#fff;border:1px solid var(--line);border-left-width:5px;border-radius:12px;padding:18px 20px;margin-bottom:12px;box-shadow:0 4px 14px rgba(21,42,64,.05)}
+  .lresult.pri{border-left-color:var(--red)}
+  .lresult.amber{border-left-color:var(--amber)}
+  .lresult.strength{border-left-color:var(--green)}
+  .lresult .lh{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+  .dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+  .dot.red{background:var(--red)}.dot.amber{background:var(--amber)}.dot.green{background:var(--green)}
+  .lresult h3{font-size:1.14rem;color:var(--navy)}
+  .lresult .ls{color:var(--muted);font-size:.8rem;font-weight:600;margin-left:auto}
+  .lresult p{color:var(--slate);font-size:14.5px}
+  .lresult p b{color:var(--navy)}
+  .final{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:30px;text-align:center;margin-top:26px;position:relative;overflow:hidden}
+  .final:after{content:"";position:absolute;left:-90px;bottom:-90px;width:280px;height:280px;border:2px solid rgba(176,141,62,.25);border-radius:50%}
+  .final h2{font-size:1.7rem;margin-bottom:10px;position:relative}
+  .final p{color:#D6E0EA;max-width:520px;margin:0 auto 22px;position:relative}
+  .final a{position:relative;display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:14px 34px;border-radius:40px;text-decoration:none}
+  .final a:hover{background:var(--gold2)}
+  .retake{background:none;border:none;color:var(--gold);font-weight:700;cursor:pointer;font-size:.95rem;margin-top:16px;font-family:inherit;text-decoration:underline}
+  footer{text-align:center;padding:28px 0 44px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy)}
+  footer .tag{color:var(--gold);font-style:italic;margin-top:4px;font-size:.9rem}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">A Free Diagnostic by Agile by Killette</div>
+  <h1>The Agile Lanes Diagnostic</h1>
+  <div class="lede">A 60-second read on where your delivery is strong — and where value is quietly leaking. Answer honestly; you'll get your priority lanes and a first move for each.</div>
+  <div class="tagline">From ceremony to ownership.</div>
+</div></header>
+
+<div class="wrap">
+  <div class="quiz" id="quiz"></div>
+  <div class="cta-row">
+    <button class="btn" id="seeBtn">See my results →</button>
+    <div class="warn" id="warn"></div>
+  </div>
+
+  <div id="results">
+    <div class="rbanner" id="rbanner"></div>
+    <div class="rsec-title">Your priority lanes — where to focus first</div>
+    <div id="priority"></div>
+    <div class="rsec-title">Your strength — keep leaning on this</div>
+    <div id="strength"></div>
+    <div class="final">
+      <h2>Want the full picture?</h2>
+      <p>This is a 7-question snapshot. My Agile Health Assessment maps every lane against your real flow metrics and gives you a prioritized roadmap — with or without me. Let's map your lanes.</p>
+      <a href="mailto:wendell@agilebykillette.com?subject=Agile%20Lanes%20Assessment">Book a conversation →</a>
+      <div><button class="retake" id="retake">↺ Retake the diagnostic</button></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <div class="brand">Agile by Killette</div>
+  <div class="tag">From ceremony to ownership.</div>
+</div></footer>
+
+<script>
+const LANES = [
+  {key:"Delivery", q:"Our teams reliably deliver what they commit to each sprint.",
+   move:"Right-size commitments to real capacity and make carryover visible — predictability follows honesty about capacity."},
+  {key:"Governance & Alignment", q:"We can see cross-team dependencies and risks before they cause delays.",
+   move:"Get dependencies out of people's heads and into a live, AI-tracked view <b>before</b> PI Planning — not discovered at the boundary."},
+  {key:"Coaching & Enablement", q:"Our teams keep improving on their own, without constant outside direction.",
+   move:"Shift from directing to coaching so the team can run — and improve — without a permanent crutch."},
+  {key:"Technical Agility", q:"Delivery isn't slowed by manual processes, tech debt, or compliance bottlenecks.",
+   move:"Bake automation and compliance into the Definition of Done, so “done” means release-ready."},
+  {key:"Measurement & Optimization", q:"We track flow metrics (cycle time, WIP, throughput) and actually act on them.",
+   move:"Stand up flow metrics so decisions run on data, not opinions — you can't improve what you can't see."},
+  {key:"Leadership & Strategy", q:"Leadership actively steers and supports the Agile way of working.",
+   move:"Align leaders on outcomes and cadence so the organization steers the train instead of second-guessing it."},
+  {key:"People (Dev Family)", q:"Our people feel valued and safe — engaged, not burned out.",
+   move:"Protect the team from noise and burnout and lead them as a Dev Family — engagement is the multiplier under every other lane."},
+];
+const SCALE = ["Rarely","Sometimes","Often","Consistently"]; // 0..3
+
+const quiz = document.getElementById('quiz');
+LANES.forEach((l,i)=>{
+  const opts = SCALE.map((s,v)=>`<div class="opt"><input type="radio" id="q${i}_${v}" name="q${i}" value="${v}"><label for="q${i}_${v}">${s}</label></div>`).join('');
+  quiz.insertAdjacentHTML('beforeend',
+    `<div class="qcard"><div class="qtop"><span class="qlane">${l.key}</span><span class="qtext">${l.q}</span></div><div class="opts">${opts}</div></div>`);
+});
+
+function val(i){const el=document.querySelector(`input[name="q${i}"]:checked`);return el?parseInt(el.value):null;}
+
+document.getElementById('seeBtn').addEventListener('click',()=>{
+  const scores = LANES.map((_,i)=>val(i));
+  if(scores.some(s=>s===null)){
+    document.getElementById('warn').textContent="Please answer all seven to get an accurate read.";
+    const firstMissing = scores.findIndex(s=>s===null);
+    document.querySelectorAll('.qcard')[firstMissing].scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  document.getElementById('warn').textContent="";
+  render(scores);
+});
+
+function ragOf(pct){ if(pct>=70) return "green"; if(pct>=40) return "amber"; return "red"; }
+
+function render(scores){
+  const total = scores.reduce((a,b)=>a+b,0);
+  const pct = Math.round(total/(LANES.length*3)*100);
+  const rag = ragOf(pct);
+  const banner = document.getElementById('rbanner');
+  const heads = {green:["Strong foundation","Your delivery engine is healthy across the lanes. The opportunity now is sharpening the edges and protecting what works as you scale."],
+                 amber:["Solid — but leaking value","The mechanics are in place, but value is slipping through a few lanes. Tightening the weakest ones is where the fast wins are."],
+                 red:["At risk","Several lanes are running on hope rather than system. The good news: that means the biggest, fastest gains are still on the table."]};
+  banner.className = "rbanner rband-"+rag;
+  banner.innerHTML = `<div class="score">${pct}%</div><h2>${heads[rag][0]}</h2><p>${heads[rag][1]}</p>`;
+
+  // priority = lowest scores (up to 3, only those scoring <=1 ideally; else lowest 2)
+  const idx = LANES.map((l,i)=>({i,s:scores[i]}));
+  const sorted = [...idx].sort((a,b)=>a.s-b.s);
+  let pri = sorted.filter(x=>x.s<=1);
+  if(pri.length===0) pri = sorted.slice(0,2);
+  if(pri.length>3) pri = pri.slice(0,3);
+  const priBox = document.getElementById('priority'); priBox.innerHTML="";
+  pri.forEach(x=>{
+    const l=LANES[x.i]; const dot = x.s===0?"red":(x.s===1?"amber":"amber"); const cls = x.s===0?"pri":"amber";
+    priBox.insertAdjacentHTML('beforeend',
+      `<div class="lresult ${cls}"><div class="lh"><span class="dot ${dot}"></span><h3>${l.key}</h3><span class="ls">${SCALE[x.s]}</span></div><p><b>First move:</b> ${l.move}</p></div>`);
+  });
+
+  // strength = highest score (first one)
+  const best = [...idx].sort((a,b)=>b.s-a.s)[0];
+  const sBox = document.getElementById('strength');
+  const bl = LANES[best.i];
+  sBox.innerHTML = `<div class="lresult strength"><div class="lh"><span class="dot green"></span><h3>${bl.key}</h3><span class="ls">${SCALE[best.s]}</span></div><p>This is working for you — it's the platform the other lanes can build on. Protect it as you improve the rest.</p></div>`;
+
+  document.getElementById('results').classList.add('show');
+  document.getElementById('rbanner').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+document.getElementById('retake').addEventListener('click',()=>{
+  document.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
+});
+</script>
+</body>
+</html>
