@@ -1,0 +1,37 @@
+BACKUP RTE PAGE — for github.com/bowlingwithmrwendell/Agile-By-Killette
+======================================================================
+
+Built to match your existing topic pages (agile-flexing.html,
+coaching-dependencies.html, etc.) — same shared CSS block, same
+header / heroshot / body / final / footer structure, same meta
+pattern, and the same infographic-as-hero convention.
+
+FILES
+  backup-rte.html            NEW  the page
+  hero-backup-rte.jpg        NEW  one-pager used as the hero image
+  og-backup-rte.jpg          NEW  1200x630 social card
+  backup-rte-onepager.png    NEW  full-res download linked on the page
+  resources.html          CHANGED adds an "Experience" card above the
+                                  Track Record card
+
+APPLY — option 1, copy the files
+  Drop all five into the repo root (they go at root, same as every
+  other page and image in this repo) and commit. resources.html
+  overwrites the existing one; the only change is the new card.
+
+APPLY — option 2, the patch
+  A git patch is included alongside this bundle:
+      git checkout -b add-backup-rte-page
+      git am 0001-Add-Backup-RTE-experience-page.patch
+      git push -u origin add-backup-rte-page
+  Then open the PR on GitHub.
+
+STILL TO DO BY HAND
+  index.html is 418 KB and its layout is dense, so I did not edit it.
+  Add a link wherever the other pages are surfaced — the Delivery
+  Manager and Track Record links are the closest neighbours.
+
+CHECKED
+  9 capability cards, correct heading order, no broken images,
+  no horizontal overflow at 1440 / 820 / 390 px, no JS errors,
+  fonts and palette inherited from your own stylesheet.
