@@ -83,11 +83,11 @@
   .metrics .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:0;padding-bottom:0}
   .metrics{padding:0}
   .mband{background:linear-gradient(155deg,var(--navy-deep),var(--navy));padding:40px 0}
-  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:var(--maxw);margin:0 auto;padding:0 26px}
-  @media(max-width:700px){.statrow{grid-template-columns:repeat(2,1fr);gap:26px}}
-  .stat{text-align:center;color:#fff;padding:8px 10px}
-  .stat .num{font-size:2.5rem;font-weight:800;color:var(--gold-soft);line-height:1}
+  .statrow{display:flex;flex-wrap:wrap;justify-content:center;gap:24px 20px;max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .stat{text-align:center;color:#fff;padding:8px 10px;flex:1 1 185px;max-width:210px}
+  .stat .num{font-size:2.1rem;font-weight:800;color:var(--gold-soft);line-height:1;white-space:nowrap}
   .stat .lab{font-size:.9rem;color:#C4D2E0;margin-top:8px;font-weight:500}
+  @media(max-width:700px){.statrow{gap:26px 18px}.stat{flex:1 1 130px;max-width:none}.stat .num{font-size:1.85rem}}
   @media(max-width:640px){.metrics .wrap{grid-template-columns:repeat(2,1fr);gap:26px}}
 
   /* GENERIC */
@@ -308,6 +308,7 @@
     <div class="stat"><div class="num">70→92%</div><div class="lab">Sprint predictability lifted</div></div>
     <div class="stat"><div class="num">−30%</div><div class="lab">Cycle time reduced</div></div>
     <div class="stat"><div class="num">105–125%</div><div class="lab">Of planned work delivered</div></div>
+    <div class="stat"><div class="num">−40%</div><div class="lab">Manual reporting overhead</div></div>
     <div class="stat"><div class="num">Zero</div><div class="lab">Audit findings, regulated cycles</div></div>
   </div>
 </div>
