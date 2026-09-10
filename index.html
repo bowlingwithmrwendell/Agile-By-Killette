@@ -219,7 +219,7 @@
 
   /* --- added components --- */
   .herofig{margin:0;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff}
-  .herofig img{width:100%;display:block}
+  .herofig img{width:100%;height:auto;display:block}
   .herofig figcaption{font-size:.92rem;color:var(--slate);padding:14px 18px;text-align:center}
   .herofig figcaption a{color:var(--navy);font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:1px}
   .herofig figcaption a:hover{color:var(--gold)}
@@ -273,7 +273,11 @@
   .aigov{background:linear-gradient(155deg,var(--navy),var(--navy-deep));color:#fff;position:relative;overflow:hidden}
   .aigov:after{content:"";position:absolute;right:-150px;top:-150px;width:440px;height:440px;
     border:2px solid rgba(176,141,62,.2);border-radius:50%;pointer-events:none}
-  .aigov-split{display:grid;grid-template-columns:1fr 1.05fr;gap:44px;align-items:center;position:relative}
+  .aigov-split{display:grid;grid-template-columns:1.15fr .85fr;gap:20px 56px;align-items:end;position:relative}
+  .aigov-split .aigov-side{padding-bottom:4px}
+  .aigov-card{max-width:1248px;margin:46px auto 0;padding:0 24px;position:relative}
+  .aigov-card .herofig{border-color:rgba(176,141,62,.45);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .aigov-card .herofig > a{display:block;cursor:zoom-in}
   .aigov h2{font-size:2.1rem;font-weight:800;color:#fff;margin:12px 0 10px}
   .aigov .tag{font-size:1.25rem;color:var(--gold-soft);font-weight:600;font-style:italic;margin-bottom:18px}
   .aigov p.lead{color:#D6E0EA;font-size:1.06rem;margin-bottom:22px}
@@ -283,7 +287,7 @@
     background:var(--gold);border-radius:3px;transform:rotate(45deg)}
   .aigov .creds b{color:#fff}
   .aigov .hero-cta{position:relative}
-  @media(max-width:880px){.aigov-split{grid-template-columns:1fr;gap:28px}}
+  @media(max-width:880px){.aigov-split{grid-template-columns:1fr;gap:6px}.aigov-card{margin-top:32px;padding:0 16px}}
 
   .govsplit{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
   .govcerts{list-style:none;margin-top:6px}
@@ -593,6 +597,8 @@
         stakeholders. I bring the governance vocabulary and practitioner credibility to close that gap &mdash;
         certified in ISO/IEC 38507:2022 and NIST AI RMF principles, and hands-on with the AI tools your teams are
         actually building with.</p>
+    </div>
+    <div class="aigov-side">
       <ul class="creds">
         <li><b>Certified:</b> ISO/IEC 38507:2022 AI Governance + NIST AI RMF principles</li>
         <li><b>Builder + governor:</b> I don't just govern AI teams &mdash; I build with these tools directly</li>
@@ -602,12 +608,14 @@
         <a href="track-record.html" class="btn ghost">See my track record</a>
       </div>
     </div>
-    <div>
-      <figure class="herofig">
-        <img src="ai-governance-coaching-illustration_3.png" alt="AI Governance Coaching &mdash; Agile by Killette: delivery team and leadership perspectives on governing AI end to end">
-        <figcaption>The AI Governance imperative in every delivery team.</figcaption>
-      </figure>
-    </div>
+  </div>
+  <div class="aigov-card">
+    <figure class="herofig">
+      <a href="ai-governance-coaching-illustration_3.png" target="_blank" rel="noopener" aria-label="Open the AI Governance coaching card full size">
+        <img src="ai-governance-coaching-illustration_3.png" width="1200" height="676" alt="AI Governance Coaching &mdash; Agile by Killette: delivery team and leadership perspectives on governing AI end to end">
+      </a>
+      <figcaption>The AI Governance imperative in every delivery team. <a href="ai-governance-coaching-illustration_3.png" target="_blank" rel="noopener">Open the card full size</a></figcaption>
+    </figure>
   </div>
 </section>
 
