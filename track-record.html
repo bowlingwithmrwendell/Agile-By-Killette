@@ -349,10 +349,19 @@
   <h2>Available now.</h2>
   <p>My Charles Schwab engagement closed in May 2026. I'm taking on Delivery Manager, RTE, Scrum Master, <b style="color:#fff">AI Governance Advisor</b>, and coaching work &mdash; full-time or contract, fractional or embedded, on-site, hybrid, or remote.</p>
   <p style="margin-bottom:22px">If your teams are shipping AI-enabled features, the governance comes with the seat &mdash; ISO/IEC 38507:2022 and NIST AI RMF principles applied inside your PI cadence, not filed in a policy document. <a href="index.html#ai-governance" style="color:#C9A85C;font-weight:700;white-space:nowrap">How I govern AI delivery &rarr;</a></p>
-  <a class="btn" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation &rarr;</a>
+  <a class="btn js-mail" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation &rarr;</a>
+  <a href="tel:+14697742233" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Call 469-774-2233</a>
+  <a href="https://linkedin.com/in/wendell-killette-3378b82" target="_blank" rel="noopener" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Message on LinkedIn</a>
+  <p class="mail-note" style="position:relative;margin:16px auto 0;font-size:.9rem;color:#D6E0EA">Email app didn&rsquo;t open? Write to <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b></p>
 </div>
 
 </div>
 <footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette &middot; Agile Coach &middot; Scrum Master &middot; RTE &middot; PMP-trained PM &middot; wendell@agilebykillette.com &middot; 469-774-2233</div></div></footer>
+<script>
+document.querySelectorAll('a.js-mail').forEach(function(a){a.addEventListener('click',function(){
+  var n=a.parentNode.querySelector('.mail-note');
+  try{navigator.clipboard.writeText('wendell@agilebykillette.com').then(function(){if(n)n.innerHTML='Address copied &mdash; paste it into your email: <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b>';});}catch(e){}
+});});
+</script>
 </body>
 </html>

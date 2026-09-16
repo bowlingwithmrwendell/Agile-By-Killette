@@ -191,10 +191,19 @@
 <div class="final">
   <h2>Want this run with your teams?</h2>
   <p>I deliver this as a working session with Dev and Product in the same room &mdash; then wire the Jira reporting so the stream stays visible after I leave.</p>
-  <a class="btn" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation &rarr;</a>
+  <a class="btn js-mail" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation &rarr;</a>
+  <a href="tel:+14697742233" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Call 469-774-2233</a>
+  <a href="https://linkedin.com/in/wendell-killette-3378b82" target="_blank" rel="noopener" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Message on LinkedIn</a>
+  <p class="mail-note" style="position:relative;margin:16px auto 0;font-size:.9rem;color:#D6E0EA">Email app didn&rsquo;t open? Write to <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b></p>
 </div>
 
 </div>
 <footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette &middot; Agile Coach &middot; Scrum Master &middot; RTE &middot; PMP-trained PM &middot; wendell@agilebykillette.com &middot; 469-774-2233</div></div></footer>
+<script>
+document.querySelectorAll('a.js-mail').forEach(function(a){a.addEventListener('click',function(){
+  var n=a.parentNode.querySelector('.mail-note');
+  try{navigator.clipboard.writeText('wendell@agilebykillette.com').then(function(){if(n)n.innerHTML='Address copied &mdash; paste it into your email: <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b>';});}catch(e){}
+});});
+</script>
 </body>
 </html>

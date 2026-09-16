@@ -169,7 +169,10 @@
   <div class="final">
     <h2>Want these mapped to your teams?</h2>
     <p>Every one of these is something I do hands-on. If your transformation has stalled or your train is wobbling, let's talk.</p>
-    <a class="btn" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation →</a>
+    <a class="btn js-mail" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Let%27s%20talk">Book a conversation →</a>
+  <a href="tel:+14697742233" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Call 469-774-2233</a>
+  <a href="https://linkedin.com/in/wendell-killette-3378b82" target="_blank" rel="noopener" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Message on LinkedIn</a>
+  <p class="mail-note" style="position:relative;margin:16px auto 0;font-size:.9rem;color:#D6E0EA">Email app didn&rsquo;t open? Write to <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b></p>
   </div>
 </div>
 
@@ -178,5 +181,11 @@
   <div class="tag2">From ceremony to ownership.</div>
   <div class="contact">Wendell Killette · Agile Coach · Scrum Master · RTE · PMP-trained PM · wendell@agilebykillette.com · 469-774-2233</div>
 </div></footer>
+<script>
+document.querySelectorAll('a.js-mail').forEach(function(a){a.addEventListener('click',function(){
+  var n=a.parentNode.querySelector('.mail-note');
+  try{navigator.clipboard.writeText('wendell@agilebykillette.com').then(function(){if(n)n.innerHTML='Address copied &mdash; paste it into your email: <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b>';});}catch(e){}
+});});
+</script>
 </body>
 </html>
