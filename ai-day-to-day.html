@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in My Day-to-Day as a Scrum Master — Agile by Killette</title>
+<meta name="description" content="How I use AI as an assistant and validator across the SDLC and every Scrum ceremony — while the team keeps ownership of the decisions.">
+<link rel="canonical" href="https://agilebykillette.com/ai-day-to-day.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="AI in My Day-to-Day as a Scrum Master">
+<meta property="og:description" content="How I use AI as an assistant and validator across the SDLC and every Scrum ceremony — while the team keeps ownership of the decisions.">
+<meta property="og:url" content="https://agilebykillette.com/ai-day-to-day.html">
+<meta property="og:image" content="https://agilebykillette.com/og-ai-day-to-day.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI in My Day-to-Day as a Scrum Master">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI in My Day-to-Day as a Scrum Master">
+<meta name="twitter:description" content="How I use AI as an assistant and validator across the SDLC and every Scrum ceremony — while the team keeps ownership of the decisions.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-ai-day-to-day.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--code:#0F2537;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:52px 0 46px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.26em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:44px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+  header h1 .plus{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:640px}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:16px;font-size:15px}
+  .intro{color:var(--slate);font-size:15.5px;max-width:760px;margin:30px auto 6px;border-left:3px solid var(--gold);padding-left:16px}
+  .cats{padding:24px 0 6px}
+  .cat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 26px 22px;margin-bottom:20px;box-shadow:0 6px 20px rgba(21,42,64,.05)}
+  .cat-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .cat-ico{font-size:1.9rem}
+  .cat-head h3{font-size:1.4rem;color:var(--navy);font-weight:800}
+  .cat-sub{color:var(--muted);font-size:.86rem;font-weight:600}
+  .q{margin-bottom:14px}
+  .q code{display:block;background:var(--code);color:#E8F0F7;font-family:'Consolas','SF Mono',Menlo,monospace;font-size:13.5px;
+    padding:12px 15px;border-radius:9px;border-left:3px solid var(--gold2);overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+  .surf{color:var(--slate);font-size:14px;margin-top:7px;padding-left:3px}
+  .ai{margin-top:18px;background:linear-gradient(120deg,rgba(176,141,62,.10),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:11px;padding:16px 18px}
+  .ai-tag{font-weight:800;color:var(--navy);font-size:.9rem;letter-spacing:.01em}
+  .ai p{color:var(--slate);font-size:14.5px;margin-top:7px}
+  .ai em{color:var(--navy);font-style:italic;font-weight:600}
+  .govern{background:var(--navy);color:#fff;border-radius:16px;padding:26px 28px;margin:8px 0 30px;position:relative}
+  .govern h3{color:var(--gold2);font-size:1.15rem;margin-bottom:8px}
+  .govern p{color:#D6E0EA;font-size:15px}
+  footer{text-align:center;padding:32px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.cat,.govern{break-inside:avoid;box-shadow:none}header:after{display:none}}
+  .home{display:inline-block;color:var(--gold2);font-weight:600;font-size:.92rem;margin-bottom:18px}
+  .home:hover{color:#fff}
+  .heroshot{margin:26px 0 4px;border-radius:16px;overflow:hidden;box-shadow:0 14px 38px rgba(21,42,64,.16);border:1px solid var(--line);background:#fff}
+  .heroshot img{width:100%;display:block}
+  .heroshot figcaption{font-size:13.5px;color:var(--muted);padding:12px 16px;text-align:center;font-style:italic}
+  .sec-title{font-size:1.05rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:800;margin:34px 0 14px}
+  .cat p{color:var(--slate);font-size:15.5px;margin-top:10px}
+  .cat p:first-of-type{margin-top:0}
+  .cat ul{margin:10px 0 4px 22px;color:var(--slate);font-size:15.5px}
+  .cat li{margin:4px 0}
+  .cat strong{color:var(--navy)}
+  .num{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;border-radius:50%;background:var(--gold2);color:var(--navy2);font-weight:800}
+  .quote{margin:12px 0 0;padding:12px 16px;background:var(--bg);border-left:3px solid var(--gold2);border-radius:8px;color:var(--navy);font-style:italic}
+  .flow{font-weight:800;color:var(--gold);font-size:1.05rem;margin-top:10px}
+  .govern .big{font-size:1.35rem;font-weight:800;color:#fff;font-style:italic;margin:6px 0 10px}
+  .govern .close{color:var(--gold2);font-weight:600}
+  @media(max-width:600px){header h1{font-size:32px}}
+</style></head>
+<body>
+  <header><div class="wrap">
+    <a class="home" href="index.html">&lsaquo; Back to agilebykillette.com</a>
+    <div class="eyebrow">Coaching Perspective by Agile by Killette</div>
+    <h1>AI in My Day-to-Day <span class="plus">as a Scrum Master</span></h1>
+    <div class="lede">AI is a force multiplier — not a replacement for judgment, coaching, or the team.</div>
+    <div class="tagline">From ceremony to ownership.</div>
+  </div></header>
+  <div class="wrap">
+    <figure class="heroshot">
+      <img src="ai-day-to-day-card.jpg" width="1254" height="1254" alt="AI in My Day-to-Day as a Scrum Master: seven areas where AI supports delivery — requirements and backlog, sprint planning, daily scrum, development and quality, release and deployment, sprint review and retrospective, and Jira plus AI.">
+      <figcaption>The one-page view. The full story is below.</figcaption>
+    </figure>
+
+    <div class="intro">As a Scrum Master, I use AI as an assistant and a validator across the SDLC. It helps me move faster, but the thinking, the coaching, and the decisions stay with people.</div>
+
+    <div class="sec-title">AI across the SDLC</div>
+    <div class="cats">
+      <div class="cat">
+        <div class="cat-head"><span class="num">01</span><div><h3>Requirements &amp; Backlog</h3><div class="cat-sub">Where it all starts</div></div></div>
+        <p>I use AI with my BA and Product Owner to turn conversations, notes, and requirements into clearer Jira stories. AI helps us:</p>
+        <ul>
+          <li>Identify missing requirements</li>
+          <li>Draft acceptance criteria</li>
+          <li>Find dependencies and duplicates</li>
+          <li>Break epics into actionable stories</li>
+          <li>Keep the backlog clean and ready for refinement</li>
+        </ul>
+        <p>My job is still to challenge the output, coach the team, and make sure the work is understood before we commit to it.</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="num">02</span><div><h3>Development</h3><div class="cat-sub">Supporting the builders</div></div></div>
+        <p>As a motivator and team lead, I encourage my developers to use AI where it makes sense — code generation, refactoring, unit tests, documentation, and troubleshooting.</p>
+        <p>I also use AI to help identify dependencies, blockers, and stories that may become a risk. That gives me the opportunity to act before a problem becomes a sprint problem.</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="num">03</span><div><h3>Testing &amp; Quality</h3><div class="cat-sub">Through the eyes of a tester</div></div></div>
+        <p>Before becoming a Scrum Master, I was a QA engineer, so I often look at the work through a tester's eyes. We used AI to help our QA team turn acceptance criteria into test scenarios, edge cases, and negative testing ideas.</p>
+        <p>AI can also help identify patterns in defects and highlight areas that deserve additional attention.</p>
+        <p>The goal isn't simply to test faster. I often tell the team: we want to fail fast, so we find issues early.</p>
+      </div>
+
+      <div class="cat">
+        <div class="cat-head"><span class="num">04</span><div><h3>Release &amp; Deployment</h3><div class="cat-sub">Clear expectations before we ship</div></div></div>
+        <p>As we approach release, we use AI to help pull together information from Jira, defects, dependencies, and delivery history.</p>
+        <p>It can help identify release risks, generate release summaries, and highlight items that need attention before we move forward. That gives the team a better view of <strong>Green / Yellow / Red</strong> release health. It's always great to have a clear expectation.</p>
+      </div>
+    </div>
+
+    <div class="sec-title">AI in my Scrum ceremonies</div>
+    <div class="cats">
+      <div class="cat">
+        <div class="cat-head"><span class="cat-ico">🗓️</span><h3>Sprint Planning</h3></div>
+        <p>I use AI to help the team understand complexity, dependencies, historical velocity, and capacity.</p>
+      </div>
+      <div class="cat">
+        <div class="cat-head"><span class="cat-ico">☀️</span><h3>Daily Scrum</h3></div>
+        <p>I use AI to surface blockers, recurring issues, and items that may need my attention.</p>
+      </div>
+      <div class="cat">
+        <div class="cat-head"><span class="cat-ico">🧹</span><h3>Backlog Refinement</h3></div>
+        <p>This is where AI can have a huge impact, especially in saving time — and being efficient with my team's time is one of the things I care about most.</p>
+        <p>We use it to help clarify stories, draft acceptance criteria, identify dependencies, and expose gaps before <strong>sprint commitment</strong>.</p>
+        <p>Why did I bold <strong>sprint commitment</strong>? Because once we've committed to the work, that is our promise to each other — and to the train — about what we are delivering.</p>
+      </div>
+      <div class="cat">
+        <div class="cat-head"><span class="cat-ico">📣</span><h3>Sprint Review</h3></div>
+        <p>I use AI to help summarize what was delivered, what changed, and what stakeholders should pay attention to.</p>
+      </div>
+      <div class="cat">
+        <div class="cat-head"><span class="cat-ico">🔁</span><h3>Retrospective</h3></div>
+        <p>I use AI to identify recurring themes across retrospectives, defects, impediments, and delivery data. The goal is to turn:</p>
+        <div class="quote">“We should probably improve that.”</div>
+        <p>into:</p>
+        <div class="quote">“Here's the improvement action, here's the owner, and here's where we're tracking it in Jira.”</div>
+      </div>
+    </div>
+
+    <div class="sec-title">Jira + AI</div>
+    <div class="cats">
+      <div class="cat">
+        <p>For me, Jira is the system of record and AI is the accelerator. I use AI to help keep Jira:</p>
+        <div class="flow">Clean → Current → Connected → Actionable</div>
+        <p>It can help summarize issues, create acceptance criteria, identify dependencies, flag aging work, and surface potential sprint risks.</p>
+        <p>But I don't let AI make the final call. <strong>The team owns the decision.</strong></p>
+        <div class="ai"><span class="ai-tag">🤖 Want the queries behind this?</span><p>See <a href="ai-jira-playbook.html"><em>The AI + Jira Playbook</em></a> for the JQL I use and how AI turns each result into insight.</p></div>
+      </div>
+    </div>
+
+    <div class="sec-title">My role doesn't change</div>
+    <div class="cats">
+      <div class="cat">
+        <p>AI doesn't replace what I do as a Scrum Master. As I said earlier, it's my assistant and validator — but I still verify, because I've seen many, many mistakes from AI, both on the job and in personal projects.</p>
+        <p>What it does is let me spend less time managing information and more time coaching people, improving flow, removing impediments, and helping the team make better decisions.</p>
+      </div>
+    </div>
+
+    <div class="govern">
+      <h3>My philosophy is simple</h3>
+      <div class="big">AI should reduce the work around delivery — not replace the thinking behind it.</div>
+      <p class="close">Better information. Earlier signals. Cleaner Jira. Stronger teams. Better delivery.</p>
+    </div>
+  </div>
+  <footer><div class="wrap">
+    <div class="brand">Agile by Killette</div>
+    <div class="tag">From ceremony to ownership.</div>
+    <div class="contact">Wendell Killette · Agile Coach · Scrum Master · RTE · PMP-trained PM · wendell@agilebykillette.com · 469-774-2233</div>
+  </div></footer>
+</body></html>
