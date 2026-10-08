@@ -3,7 +3,7 @@
    Set ENDPOINT below to your Cloudflare Worker URL. Until it's set, the widget stays hidden. */
 (function () {
   "use strict";
-  var ENDPOINT = "https://YOUR-WORKER.workers.dev/api/chat";
+  var ENDPOINT = "https://abk-scrum-agent.bowlingwithmrwendell.workers.dev/api/chat";
 
   if (!ENDPOINT || ENDPOINT.indexOf("YOUR-WORKER") !== -1) return;
   if (window.__abkScrumAgent) return;
