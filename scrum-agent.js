@@ -164,4 +164,13 @@
   input.addEventListener("input", autosize);
   input.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) { open(false); fab.focus(); } });
+  // Deep links: ?chat=open (or #scrum-agent) opens the chat; ?ask=Your+question opens it with the question ready to send.
+  try {
+    var qs = new URLSearchParams(location.search);
+    var preset = (qs.get("ask") || "").slice(0, 300);
+    if (preset || qs.get("chat") === "open" || location.hash === "#scrum-agent") {
+      open(true);
+      if (preset) { input.value = preset; autosize(); }
+    }
+  } catch (e) {}
 })();

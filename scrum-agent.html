@@ -6,7 +6,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Agile by Killette">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Meet the Scrum Agent — free AI coaching for Agile teams">
+<meta property="og:title" content="Introducing the Scrum Agent from Agile by Killette">
 <meta property="og:description" content="Meet the Scrum Agent: free AI coaching for Scrum and SAFe teams on agilebykillette.com. Always on, no sign-up, built responsibly.">
 <meta property="og:url" content="https://agilebykillette.com/scrum-agent.html">
 <meta property="og:image" content="https://agilebykillette.com/og-scrum-agent.jpg">
@@ -14,7 +14,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Meet the Scrum Agent — free AI coaching for Agile teams">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Meet the Scrum Agent — free AI coaching for Agile teams">
+<meta name="twitter:title" content="Introducing the Scrum Agent from Agile by Killette">
 <meta name="twitter:description" content="Meet the Scrum Agent: free AI coaching for Scrum and SAFe teams on agilebykillette.com. Always on, no sign-up, built responsibly.">
 <meta name="twitter:image" content="https://agilebykillette.com/og-scrum-agent.jpg">
 <meta name="author" content="Wendell Killette">
@@ -91,8 +91,8 @@
   </div></header>
   <div class="wrap">
     <figure class="heroshot">
-      <img src="scrum-agent-card.jpg" width="1254" height="1254" alt="Meet the Scrum Agent: free AI coaching for Agile teams covering sprint planning, daily scrum, backlog health, retrospectives, dependencies and flow, and AI plus Jira.">
-      <figcaption>The Scrum Agent Coaching Card.</figcaption>
+      <a href="?chat=open" id="introCard" title="Open the Scrum Agent"><img src="scrum-agent-intro.jpg" width="1312" height="1199" alt="Introducing the Scrum Agent from Agile by Killette: your AI coaching companion for Scrum and Agile practices, sprint execution and predictability, backlog health, Jira and AI-assisted delivery, dependencies and flow, Product Owner and Scrum Master practices, RTE and ART execution, leadership and transformation, and metrics and continuous improvement."></a>
+      <figcaption>Click the card &mdash; or scan its QR code on your phone &mdash; to open the Scrum Agent.</figcaption>
     </figure>
 
     <div class="intro">Your daily scrum runs long. Your backlog is a junk drawer. Your retro produces the same three sticky notes every sprint. You shouldn&rsquo;t have to wait for a coach to be available to get unstuck &mdash; so I built one that&rsquo;s always on.</div>
@@ -111,6 +111,11 @@
         <p>It answers the way I coach: direct, practical, two to four things you can do this sprint &mdash; and it points you to the right playbook on this site when there&rsquo;s more to read.</p>
       </div>
     </div>
+
+    <figure class="heroshot" style="margin:6px 0 26px">
+      <img src="scrum-agent-card.jpg" width="1254" height="1254" alt="Scrum Agent quick-start card: what to ask, how it works, and how it's built responsibly.">
+      <figcaption>Quick-start card: what to ask and how it works.</figcaption>
+    </figure>
 
     <div class="sec-title">Built responsibly</div>
     <div class="cats">
@@ -146,6 +151,13 @@
     <div class="contact">Wendell Killette · Agile Coach · Scrum Master · RTE · PMP-trained PM · wendell@agilebykillette.com · 469-774-2233</div>
   </div></footer>
 <script>
+function openAgent(e) {
+  var fab = document.querySelector(".abk-sa-fab");
+  if (!fab) return;
+  if (e) e.preventDefault();
+  if (fab.getAttribute("aria-expanded") !== "true") fab.click();
+}
+document.getElementById("introCard").addEventListener("click", openAgent);
 document.getElementById("tryNow").addEventListener("click", function () {
   var fab = document.querySelector(".abk-sa-fab");
   if (fab) { if (fab.getAttribute("aria-expanded") !== "true") fab.click(); }
