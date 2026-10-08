@@ -43,6 +43,15 @@
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
   .eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
   section{padding:74px 0}
+  .hello{background:#fff}
+  .hello .wrap{display:grid;grid-template-columns:300px 1fr;gap:52px;align-items:center}
+  .hello figure{margin:0;border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(21,42,64,.18);border:3px solid var(--gold)}
+  .hello figure img{display:block;width:100%;height:auto}
+  .hello h2{font-size:2.1rem;color:var(--navy);font-weight:800;margin:10px 0 16px}
+  .hello p{color:var(--slate,#42556B);font-size:1.06rem;margin-bottom:14px;max-width:62ch}
+  .hello .note{border-left:4px solid var(--gold);padding:12px 16px;background:#FBF6EA;border-radius:8px;color:var(--navy);font-weight:600}
+  .hello .sig{font-family:"Brush Script MT",cursive;font-size:1.9rem;color:var(--gold);margin-top:6px}
+  @media(max-width:820px){.hello .wrap{grid-template-columns:1fr;gap:28px}.hello figure{max-width:260px;margin:0 auto}}
   .btn{display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:14px 28px;
     border-radius:40px;font-size:.98rem;transition:.2s;border:2px solid var(--gold)}
   .btn:hover{background:var(--gold-soft);border-color:var(--gold-soft);transform:translateY(-1px)}
@@ -363,6 +372,25 @@
     <div class="stat"><div class="num">Zero</div><div class="lab">Audit findings, regulated cycles</div></div>
   </div>
 </div>
+
+<!-- HELLO -->
+<section id="hello" class="hello">
+  <div class="wrap">
+    <figure><img src="wendell-killette-headshot.jpg" width="720" height="900" alt="Wendell Killette, Agile Coach, Scrum Master and RTE, founder of Agile by Killette"></figure>
+    <div>
+      <div class="eyebrow">Hello, and welcome to Agile by Killette</div>
+      <h2>I'm Wendell Killette. This site is my body of work.</h2>
+      <p>What you'll find here isn't information pulled from the internet. Every playbook, framework, coaching card and perspective on this site comes from my own practice &mdash; more than 20 years as an Agile practitioner, Scrum Master, RTE and coach, working with real teams on real delivery.</p>
+      <p class="note">Think of this site as an extension of my r&eacute;sum&eacute;: the r&eacute;sum&eacute; tells you where I've been; these pages show you how I work.</p>
+      <p>Thank you for visiting my body of work. Look around, borrow what helps your team, and if you'd like to talk through your own challenges, I'd be glad to hear from you.</p>
+      <div class="sig">Wendell</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px">
+        <a href="resources.html" class="btn dark">Explore my work</a>
+        <a href="wendell-killette-resume.pdf" target="_blank" rel="noopener" class="btn" style="background:transparent;color:var(--navy);border-color:var(--navy)">Download my r&eacute;sum&eacute; (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- VALUE / PROBLEM -->
 <section id="value">
