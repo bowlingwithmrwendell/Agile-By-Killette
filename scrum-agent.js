@@ -135,6 +135,7 @@
     }).then(function (res) {
       typing.remove();
       if (res.ok && res.data.reply) {
+        res.data.reply = String(res.data.reply).replace(/\*\*([^*]+)\*\*/g, "$1").replace(/__([^_]+)__/g, "$1").replace(/^#{1,6}\s+/gm, "").replace(/^\s*[*]\s+/gm, "• ");
         history.push({ role: "assistant", content: res.data.reply }); save();
         bubble("assistant", res.data.reply);
       } else {
