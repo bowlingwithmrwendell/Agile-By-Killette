@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agents &mdash; Agile by Killette</title>
+<meta name="description" content="Working AI agents built by Wendell Killette with governance designed in: the model plans and explains, deterministic code does the math, and humans approve what goes out.">
+<link rel="canonical" href="https://agilebykillette.com/agents.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:title" content="AI Agents by Agile by Killette">
+<meta property="og:description" content="Working AI agents with governance designed in: bounded authority, deterministic math, and humans in the loop.">
+<meta property="og:url" content="https://agilebykillette.com/agents.html">
+<meta property="og:image" content="https://agilebykillette.com/og-pmo-delivery-agent.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--green:#2E7D57;--red:#B4483C;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  .home{display:inline-block;color:var(--gold2);font-weight:600;font-size:.92rem;margin-bottom:18px}
+  .home:hover{color:#fff}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:46px 0 44px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:42px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px;max-width:22ch;position:relative}
+  header h1 .g{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:680px;position:relative}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:14px;font-size:14.5px;position:relative}
+  .heroshot{margin:26px 0 4px;border-radius:16px;overflow:hidden;box-shadow:0 14px 38px rgba(21,42,64,.16);border:1px solid var(--line);background:#fff}
+  .heroshot img{width:100%;display:block}
+  .heroshot figcaption{font-size:13.5px;color:var(--muted);padding:12px 16px;text-align:center;font-style:italic}
+  .intro{color:var(--slate);font-size:16px;max-width:760px;margin:28px auto 8px;border-left:3px solid var(--gold);padding-left:16px}
+  section.body{padding:22px 0 6px}
+  h2.sec{font-size:1.55rem;color:var(--navy);font-weight:800;margin:32px 0 14px;border-bottom:2px solid var(--gold);padding-bottom:8px;display:inline-block}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .capgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+  .cap{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .cap h4{color:var(--navy);font-size:1.04rem;margin-bottom:4px}
+  .cap p{color:var(--slate);font-size:14.5px}
+  .cap.flag{grid-column:1/-1;border-left-color:var(--gold2);background:linear-gradient(120deg,rgba(176,141,62,.1),rgba(31,59,87,.03))}
+  @media(max-width:640px){.capgrid{grid-template-columns:1fr}header h1{font-size:31px}}
+  p.lead{color:var(--slate);font-size:15.5px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+  .chip{background:#EEF3F8;color:var(--navy);border:1px solid #dbe6f0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+  ul.plain{list-style:none;margin-top:6px} ul.plain li{position:relative;padding-left:24px;margin-bottom:9px;color:var(--slate);font-size:15px}
+  ul.plain li:before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--gold);border-radius:3px;transform:rotate(45deg)}
+  ul.plain li b{color:var(--ink)}
+  .shot{margin:16px 0 6px;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 28px rgba(21,42,64,.12);background:#fff}
+  .shot img{width:100%;display:block}
+  .shot figcaption{font-size:13px;color:var(--muted);padding:11px 16px;text-align:center;font-style:italic;background:#fff}
+  .steps{list-style:none;counter-reset:s;margin-top:8px}
+  .steps li{counter-increment:s;position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 22px 18px 70px;margin-bottom:12px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .steps li:before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:17px;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem}
+  .steps li b{display:block;color:var(--navy);font-size:1.06rem;margin-bottom:3px}
+  .steps li span{color:var(--slate);font-size:15px}
+  .pull{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:28px 30px;margin:26px 0;position:relative;overflow:hidden}
+  .pull:after{content:"";position:absolute;left:-80px;bottom:-80px;width:250px;height:250px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .pull .q{font-size:1.3rem;font-weight:700;font-style:italic;color:#fff;position:relative}
+  .pull .a{color:var(--gold2);font-size:.9rem;font-weight:600;margin-top:10px;position:relative}
+  .pull .plabel{position:relative;color:var(--gold2);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+  .callout{background:linear-gradient(120deg,rgba(176,141,62,.12),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:12px;padding:18px 20px;margin:18px 0}
+  .callout b{color:var(--navy)}
+  .statband{display:flex;flex-wrap:wrap;justify-content:center;gap:22px 18px;background:var(--navy2);border-radius:16px;padding:26px 20px;margin:22px 0}
+  .statband .stat{text-align:center;color:#fff;flex:1 1 150px;max-width:190px}
+  .statband .num{font-size:2rem;font-weight:800;color:var(--gold2);line-height:1}
+  .statband .lbl{font-size:13px;color:#D6E0EA;margin-top:5px}
+  .final{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;text-align:center;border-radius:16px;padding:32px;margin:26px 0 6px;position:relative;overflow:hidden}
+  .final:after{content:"";position:absolute;left:-90px;bottom:-90px;width:280px;height:280px;border:2px solid rgba(176,141,62,.24);border-radius:50%}
+  .final h2{font-size:1.6rem;margin-bottom:10px;position:relative}
+  .final p{color:#D6E0EA;max-width:580px;margin:0 auto 22px;position:relative}
+  .final .btn{position:relative;display:inline-block;margin:6px 5px 0;padding:13px 28px;border-radius:40px;font-weight:700}
+  .final .btn.gold{background:var(--gold);color:#fff}.final .btn.gold:hover{background:var(--gold2)}
+  .final .btn.ghost{border:1.5px solid var(--gold2);color:#fff}.final .btn.ghost:hover{background:rgba(255,255,255,.1)}
+  .pending{position:relative;font-size:.86rem;color:#D6E0EA;margin-top:16px}
+  footer{text-align:center;padding:30px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.card,.pull,.steps li{break-inside:avoid;box-shadow:none}header:after,.pull:after{display:none}}
+</style>
+<style>
+  .agents{display:grid;gap:20px;margin:28px 0 10px}
+  .agent{display:grid;grid-template-columns:300px 1fr;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(21,42,64,.07);transition:transform .15s,box-shadow .15s}
+  .agent:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(21,42,64,.13)}
+  .agent .pic{background:#EEF3F8;min-height:190px}
+  .agent .pic img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+  .agent .txt{padding:20px 24px}
+  .agent .kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .agent h3{color:var(--navy);font-size:1.3rem;margin:4px 0 6px}
+  .agent p{color:var(--slate);font-size:15px}
+  .agent .links{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+  .agent .links a{font-size:14px;font-weight:700;padding:7px 14px;border-radius:30px;border:1.5px solid var(--gold);color:var(--navy)}
+  .agent .links a.primary{background:var(--gold);color:#fff}
+  .agent .links a:hover{background:var(--gold2);color:#fff;border-color:var(--gold2)}
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+  @media(max-width:720px){.agent{grid-template-columns:1fr}.agent .pic{max-height:220px}.principles{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="home" href="index.html">&lsaquo; Back to agilebykillette.com</a>
+  <div class="eyebrow">Agile by Killette &middot; Builds</div>
+  <h1>AI agents, <span class="g">governed by design</span></h1>
+  <div class="lede">Working AI agents I&rsquo;ve built and shipped &mdash; each one live, open source and built on fictional data, so you can try it yourself.</div>
+  <div class="tagline">Capability with control: the model plans and explains, code does the math, and people stay accountable.</div>
+</div></header>
+<div class="wrap">
+
+<p class="intro">I don&rsquo;t treat AI governance as a slide deck. Every agent here puts the same principles into working software &mdash; and each one has a live sandbox you can open, question and check.</p>
+
+<div class="agents">
+
+  <a class="agent" href="pmo-delivery-agent.html">
+    <div class="pic"><img src="pmo-hero.jpg" alt="Project Management and Delivery Agent portfolio view" loading="lazy"></div>
+    <div class="txt">
+      <div class="kicker">Delivery &middot; PMO</div>
+      <h3>Project Management &amp; Delivery Agent</h3>
+      <p>RAID scoring, earned value, RAG status, C-level status reports and resource optimisation for a multi-stream program. Every AI answer waits for a named human to approve it.</p>
+      <div class="links"><span style="font-size:14px;font-weight:700;color:var(--navy)">Read more &rsaquo;</span></div>
+    </div>
+  </a>
+
+  <a class="agent" href="equity-comp-agent.html">
+    <div class="pic"><img src="eca-hero.png" alt="Equity Compensation Management Agent console" loading="lazy"></div>
+    <div class="txt">
+      <div class="kicker">Fintech &middot; Regulated</div>
+      <h3>Equity Compensation Management Agent</h3>
+      <p>Tax withholding, vesting, ledger reconciliation, IRS forms and Rule 10b5-1 trading plans. Claude plans and explains; audited code does every calculation.</p>
+      <div class="links"><span style="font-size:14px;font-weight:700;color:var(--navy)">Read more &rsaquo;</span></div>
+    </div>
+  </a>
+
+  <a class="agent" href="scrum-agent.html">
+    <div class="pic"><img src="scrum-agent-card.jpg" alt="The Scrum Agent" loading="lazy"></div>
+    <div class="txt">
+      <div class="kicker">Coaching &middot; On this site</div>
+      <h3>The Scrum Agent</h3>
+      <p>Free AI coaching for Scrum and SAFe teams, available on every page of this site &mdash; always on, no sign-up, built responsibly.</p>
+      <div class="links"><span style="font-size:14px;font-weight:700;color:var(--navy)">Read more &rsaquo;</span></div>
+    </div>
+  </a>
+
+</div>
+
+<h2 class="sec">The principles behind every agent</h2>
+<div class="principles">
+  <div class="cap"><h4>Bounded authority</h4><p>The model can read and propose. It gets no tool that writes records or sends anything on its own.</p></div>
+  <div class="cap"><h4>Deterministic math</h4><p>Every figure comes from tested code. The model is never asked to calculate a number.</p></div>
+  <div class="cap"><h4>Humans approve</h4><p>Outbound actions &mdash; and, in the PMO agent, every AI answer &mdash; wait for a named person to decide.</p></div>
+</div>
+
+<div class="final">
+  <h2>Bring governed AI to your delivery</h2>
+  <p>Want to talk through how this pattern fits your teams, your PMO or your regulated workflows?</p>
+  <a class="btn gold" href="mailto:wendell@agilebykillette.com?subject=AI%20agents%20-%20Let%27s%20talk">Book a governance call</a>
+  <a class="btn ghost" href="index.html#ai-governance">AI governance services</a>
+</div>
+</div>
+<footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette &middot; Agile Coach &middot; Scrum Master &middot; RTE &middot; PMP-trained PM &middot; wendell@agilebykillette.com &middot; 469-774-2233</div></div></footer>
+<script src="/scrum-agent.js" defer></script>
+</body>
+</html>
