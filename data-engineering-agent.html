@@ -112,7 +112,7 @@
   <a class="home" href="agents.html">&lsaquo; All agents</a> &nbsp; <a class="home" href="index.html">agilebykillette.com</a>
   <div class="eyebrow">A build by Agile by Killette</div>
   <h1>The Data Engineering <span class="g">Agent</span></h1>
-  <div class="lede">Trustworthy data tables on Databricks, Snowflake and Microsoft Fabric &mdash; for the people who need the data, not just the people who write the code. Describe what you need in plain English or build it step by step; the agent finds the data, writes the code, tests it, and tells you what it found.</div>
+  <div class="lede">Trustworthy data tables on Databricks, Snowflake and Microsoft Fabric &mdash; for the people who need the data, not just the people who write the code. Describe what you need in plain English or build it step by step; the agent finds the data, writes the code, tests it, and tells you what it found. And when you acquire a company or change platforms, it proves the migrated data reconciles.</div>
   <div class="tagline">The AI never writes code freehand, and nothing reaches a platform until a named human approves it.</div>
 </div></header>
 <div class="wrap">
@@ -158,6 +158,19 @@
   <figcaption>A customer list blocked by policy: personal information must be protected before it can leave the source. One click fixes it.</figcaption>
 </figure>
 
+<h2 class="sec">Built for acquisitions and platform moves</h2>
+<p class="lead">When a company is acquired, the hard part isn&rsquo;t copying its tables. It&rsquo;s proving nothing was lost, translated wrongly or counted twice. Migration mode takes the acquired company&rsquo;s data through four stages, all behind the same sandbox and approval gates.</p>
+<ol class="steps">
+  <li><b>Onboard their tables.</b><span>Paste a schema export; columns are typed for your platform and anything that looks like personal information is tagged PII automatically.</span></li>
+  <li><b>Conform their data to yours.</b><span>Map their columns onto your standard model, convert text dates and amounts, translate their codes (&ldquo;Closed&rdquo; becomes &ldquo;completed&rdquo;) and swap their customer numbers for yours through a crosswalk.</span></li>
+  <li><b>Prove it reconciles.</b><span>Every source row arrives exactly once, totals match to the cent, unreadable values and unmatched IDs are counted with examples, and customers who exist in both companies are caught before they&rsquo;re counted twice.</span></li>
+  <li><b>Prove the old reports still match &mdash; then move.</b><span>Paste a legacy report&rsquo;s SQL: the old query and the new pipeline run on the same data and every row is compared, and the result goes in front of the approver. To change platforms, every pipeline recompiles for Databricks, Snowflake or Fabric and old and new tables are reconciled.</span></li>
+</ol>
+<figure class="shot">
+  <img src="de-migrate.jpg" width="1920" height="1140" loading="lazy" alt="Migration result combining Lakeside and Summit orders: works with three things to know, including unreadable totals and customer IDs missing from the crosswalk">
+  <figcaption>Combining an acquired company&rsquo;s orders with ours: 550 rows reconciled, with the two unreadable totals and the missing crosswalk IDs called out in plain English.</figcaption>
+</figure>
+
 <h2 class="sec">The governance, built in</h2>
 <ul class="plain">
   <li><b>No freehand code.</b> Claude fills in a typed spec. A deterministic compiler writes every line of SQL, PySpark and dbt &mdash; the same spec always produces the same code.</li>
@@ -182,10 +195,10 @@
 
 <h2 class="sec">How it&rsquo;s built</h2>
 <ol class="steps">
-  <li><b>A FastAPI service with 26 API operations.</b><span>Catalog, lineage, runs, compile, pipelines, sandbox tests, fixes, deployment requests, approvals, the agent, the review queue, audit and governance &mdash; with interactive API docs.</span></li>
+  <li><b>A FastAPI service with 32 API operations.</b><span>Catalog, lineage, runs, compile, pipelines, sandbox tests, fixes, deployment requests, approvals, migration (legacy comparison, reconciliation, re-platforming, schema import), the agent, the review queue, audit and governance &mdash; with interactive API docs.</span></li>
   <li><b>A spec, a compiler and a sandbox.</b><span>A typed pipeline spec checked against the catalog; a compiler for Databricks SQL, Snowflake SQL, Fabric T-SQL, PySpark and dbt; and an isolated sandbox that executes it and runs the quality and compliance checks.</span></li>
-  <li><b>Claude on top, with bounded authority.</b><span>Eight tools: search the catalog, read a dataset, list platforms, draft or revise a pipeline, test it, apply a fix, and request deployment &mdash; which only queues it for a person.</span></li>
-  <li><b>Built to run and to be checked.</b><span>PostgreSQL or SQLite, Docker, a Render blueprint, and 51 automated tests &mdash; including a scripted stand-in for Claude, so CI needs no secrets.</span></li>
+  <li><b>Claude on top, with bounded authority.</b><span>Thirteen tools: search the catalog, read a dataset, list platforms, draft or revise a pipeline or a migration, test it, apply a fix, compare with legacy SQL, reconcile tables, plan a platform move, and request deployment &mdash; which only queues it for a person.</span></li>
+  <li><b>Built to run and to be checked.</b><span>PostgreSQL or SQLite, Docker, a Render blueprint, and 69 automated tests &mdash; including a scripted stand-in for Claude, so CI needs no secrets.</span></li>
 </ol>
 
 <div class="callout"><b>Why I built it this way:</b> I&rsquo;ve spent years between business teams waiting on data and engineering teams buried in tickets. This agent shortens that queue without lowering the bar: the business user gets an answer in minutes, the engineer gets reviewable code, and the data owner keeps control of what goes live.</div>
@@ -193,7 +206,7 @@
 <div class="statband">
   <div class="stat"><div class="num">3</div><div class="lbl">platforms: Databricks, Snowflake, Fabric</div></div>
   <div class="stat"><div class="num">5</div><div class="lbl">code outputs from one spec</div></div>
-  <div class="stat"><div class="num">51</div><div class="lbl">tests passing</div></div>
+  <div class="stat"><div class="num">69</div><div class="lbl">tests passing</div></div>
   <div class="stat"><div class="num">100%</div><div class="lbl">of deployments approved by a named human</div></div>
   <div class="stat"><div class="num">0</div><div class="lbl">lines of code the AI writes freehand</div></div>
 </div>
