@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Engineering Agent &mdash; Agile by Killette</title>
+<meta name="description" content="Governed data pipelines on Databricks, Snowflake and Microsoft Fabric for people who don't write code. Claude drafts a spec, a deterministic compiler writes the SQL, PySpark and dbt, a sandbox tests it, and a named human approves every deployment.">
+<link rel="canonical" href="https://agilebykillette.com/data-engineering-agent.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="The Data Engineering Agent">
+<meta property="og:description" content="Pipelines in plain English: code compiled from a spec, tested in a sandbox, and deployed only when a named human approves.">
+<meta property="og:url" content="https://agilebykillette.com/data-engineering-agent.html">
+<meta property="og:image" content="https://agilebykillette.com/og-data-engineering-agent.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Data Engineering Agent">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Data Engineering Agent">
+<meta name="twitter:description" content="The AI never writes code freehand. A named human approves every deployment.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-data-engineering-agent.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--green:#2E7D57;--red:#B4483C;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  .home{display:inline-block;color:var(--gold2);font-weight:600;font-size:.92rem;margin-bottom:18px}
+  .home:hover{color:#fff}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:46px 0 44px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:42px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px;max-width:22ch;position:relative}
+  header h1 .g{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:680px;position:relative}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:14px;font-size:14.5px;position:relative}
+  .heroshot{margin:26px 0 4px;border-radius:16px;overflow:hidden;box-shadow:0 14px 38px rgba(21,42,64,.16);border:1px solid var(--line);background:#fff}
+  .heroshot img{width:100%;display:block}
+  .heroshot figcaption{font-size:13.5px;color:var(--muted);padding:12px 16px;text-align:center;font-style:italic}
+  .intro{color:var(--slate);font-size:16px;max-width:760px;margin:28px auto 8px;border-left:3px solid var(--gold);padding-left:16px}
+  section.body{padding:22px 0 6px}
+  h2.sec{font-size:1.55rem;color:var(--navy);font-weight:800;margin:32px 0 14px;border-bottom:2px solid var(--gold);padding-bottom:8px;display:inline-block}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .capgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+  .cap{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .cap h4{color:var(--navy);font-size:1.04rem;margin-bottom:4px}
+  .cap p{color:var(--slate);font-size:14.5px}
+  .cap.flag{grid-column:1/-1;border-left-color:var(--gold2);background:linear-gradient(120deg,rgba(176,141,62,.1),rgba(31,59,87,.03))}
+  @media(max-width:640px){.capgrid{grid-template-columns:1fr}header h1{font-size:31px}}
+  p.lead{color:var(--slate);font-size:15.5px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+  .chip{background:#EEF3F8;color:var(--navy);border:1px solid #dbe6f0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+  ul.plain{list-style:none;margin-top:6px} ul.plain li{position:relative;padding-left:24px;margin-bottom:9px;color:var(--slate);font-size:15px}
+  ul.plain li:before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--gold);border-radius:3px;transform:rotate(45deg)}
+  ul.plain li b{color:var(--ink)}
+  .shot{margin:16px 0 6px;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 28px rgba(21,42,64,.12);background:#fff}
+  .shot img{width:100%;display:block}
+  .shot figcaption{font-size:13px;color:var(--muted);padding:11px 16px;text-align:center;font-style:italic;background:#fff}
+  .steps{list-style:none;counter-reset:s;margin-top:8px}
+  .steps li{counter-increment:s;position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 22px 18px 70px;margin-bottom:12px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .steps li:before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:17px;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem}
+  .steps li b{display:block;color:var(--navy);font-size:1.06rem;margin-bottom:3px}
+  .steps li span{color:var(--slate);font-size:15px}
+  .pull{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:28px 30px;margin:26px 0;position:relative;overflow:hidden}
+  .pull:after{content:"";position:absolute;left:-80px;bottom:-80px;width:250px;height:250px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .pull .q{font-size:1.3rem;font-weight:700;font-style:italic;color:#fff;position:relative}
+  .pull .a{color:var(--gold2);font-size:.9rem;font-weight:600;margin-top:10px;position:relative}
+  .pull .plabel{position:relative;color:var(--gold2);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+  .callout{background:linear-gradient(120deg,rgba(176,141,62,.12),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:12px;padding:18px 20px;margin:18px 0}
+  .callout b{color:var(--navy)}
+  .statband{display:flex;flex-wrap:wrap;justify-content:center;gap:22px 18px;background:var(--navy2);border-radius:16px;padding:26px 20px;margin:22px 0}
+  .statband .stat{text-align:center;color:#fff;flex:1 1 150px;max-width:190px}
+  .statband .num{font-size:2rem;font-weight:800;color:var(--gold2);line-height:1}
+  .statband .lbl{font-size:13px;color:#D6E0EA;margin-top:5px}
+  .final{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;text-align:center;border-radius:16px;padding:32px;margin:26px 0 6px;position:relative;overflow:hidden}
+  .final:after{content:"";position:absolute;left:-90px;bottom:-90px;width:280px;height:280px;border:2px solid rgba(176,141,62,.24);border-radius:50%}
+  .final h2{font-size:1.6rem;margin-bottom:10px;position:relative}
+  .final p{color:#D6E0EA;max-width:580px;margin:0 auto 22px;position:relative}
+  .final .btn{position:relative;display:inline-block;margin:6px 5px 0;padding:13px 28px;border-radius:40px;font-weight:700}
+  .final .btn.gold{background:var(--gold);color:#fff}.final .btn.gold:hover{background:var(--gold2)}
+  .final .btn.ghost{border:1.5px solid var(--gold2);color:#fff}.final .btn.ghost:hover{background:rgba(255,255,255,.1)}
+  .pending{position:relative;font-size:.86rem;color:#D6E0EA;margin-top:16px}
+  footer{text-align:center;padding:30px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.card,.pull,.steps li{break-inside:avoid;box-shadow:none}header:after,.pull:after{display:none}}
+</style>
+<style>
+  .heroshot img,.shot img{height:auto}
+  .statband .stat{flex:1 1 128px}
+  .rag{display:inline-block;font-size:12px;font-weight:800;padding:2px 9px;border-radius:20px;color:#fff;vertical-align:1px}
+  .rag.g{background:var(--green)}.rag.a{background:#C27C0E}.rag.r{background:var(--red)}
+  table.rules{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+  table.rules th{text-align:left;color:var(--navy);border-bottom:2px solid var(--line);padding:8px 10px}
+  table.rules td{border-bottom:1px solid var(--line);padding:9px 10px;color:var(--slate);vertical-align:top}
+  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+  @media(max-width:720px){.who{grid-template-columns:1fr}}
+  .ex{font-family:Consolas,Menlo,monospace;font-size:13px;background:#0F1F31;color:#E9DDBF;border-radius:12px;padding:16px 18px;overflow-x:auto;white-space:pre;margin:10px 0}
+  .gate{font-family:Consolas,Menlo,monospace;font-size:13.5px;background:#0F1F31;color:#E9DDBF;border-radius:12px;padding:16px 18px;overflow-x:auto;white-space:pre;margin:10px 0}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="home" href="agents.html">&lsaquo; All agents</a> &nbsp; <a class="home" href="index.html">agilebykillette.com</a>
+  <div class="eyebrow">A build by Agile by Killette</div>
+  <h1>The Data Engineering <span class="g">Agent</span></h1>
+  <div class="lede">Trustworthy data tables on Databricks, Snowflake and Microsoft Fabric &mdash; for the people who need the data, not just the people who write the code. Describe what you need in plain English or build it step by step; the agent finds the data, writes the code, tests it, and tells you what it found.</div>
+  <div class="tagline">The AI never writes code freehand, and nothing reaches a platform until a named human approves it.</div>
+</div></header>
+<div class="wrap">
+
+<figure class="heroshot">
+  <img src="de-hero.jpg" width="1920" height="980" alt="Data Engineering Agent sandbox result: works with two warnings, a plain-English summary, and a preview of monthly revenue by region">
+  <figcaption>A sandbox result in plain English: what the table contains, what the checks found, and a preview of the real output.</figcaption>
+</figure>
+
+<p class="intro">In most companies the people who need data can&rsquo;t build pipelines, and the people who can are a queue. Handing that gap to an AI that writes SQL freehand just moves the risk: a wrong join quietly doubles a revenue number, or a customer&rsquo;s email lands in a dashboard. So I built this agent the way I believe AI belongs in data work &mdash; the AI translates the request into a small, typed spec; tested code turns the spec into SQL, PySpark and dbt; a sandbox proves it on sample data; and a person approves every deployment.</p>
+
+<section class="body">
+
+<h2 class="sec">Built for three people</h2>
+<div class="who">
+  <div class="cap"><h4>The business user</h4><p>Asks in plain English or uses the six-step builder &mdash; no code, no SQL. Gets a plain-English summary, a checklist of what to know, and one-click <b>Apply fix</b> buttons.</p></div>
+  <div class="cap"><h4>The developer</h4><p>Flips one switch for the generated SQL, PySpark, dbt model and tests, the schedule file, the spec JSON, and exactly how every check was measured.</p></div>
+  <div class="cap"><h4>The approver</h4><p>Sees what will deploy, where, what the sandbox found and the files that will be committed &mdash; then approves, or rejects with a reason.</p></div>
+</div>
+
+<h2 class="sec">My five-layer framework, made real</h2>
+<div class="capgrid">
+  <div class="cap"><h4>1 &middot; Interaction</h4><p>A guided builder, plain-English chat, a data catalog browser, an approvals queue and a REST API with interactive docs.</p></div>
+  <div class="cap"><h4>2 &middot; Orchestration</h4><p>Turns intent into a spec and moves it through one state machine: draft &rarr; tested &rarr; waiting for approval &rarr; live. Failed checks come with fixes it can apply itself.</p></div>
+  <div class="cap"><h4>3 &middot; Tool calling</h4><p>One connector interface for Databricks, Snowflake and Microsoft Fabric. Each names tables its own way and gets its own schedule: an Asset Bundle job, a Snowflake Task, a Data Factory pipeline.</p></div>
+  <div class="cap"><h4>4 &middot; Code sandbox</h4><p>Runs the compiled code in an isolated database holding only sample data, with a hard time limit, then checks data quality and compliance.</p></div>
+  <div class="cap flag"><h4>5 &middot; Information</h4><p>A metadata catalog with friendly names, owners, freshness and PII / Confidential tags; dataset and column-level lineage; run history; and governance tags that carry through to every table the agent publishes.</p></div>
+</div>
+
+<h2 class="sec">What the sandbox catches</h2>
+<p class="lead">The demo data has real-world problems planted on purpose. Each one is found, explained in plain English, and paired with a fix.</p>
+<table class="rules">
+  <tr><th style="width:34%">The problem</th><th>What the agent says &mdash; and does</th></tr>
+  <tr><td><b>A join that doubles your totals</b></td><td>&ldquo;Products (raw) has more than one row for P-007&hellip; Totals would be overstated.&rdquo; Fails the test, and <i>Apply fix</i> switches to the certified one-row-per-product table.</td></tr>
+  <tr><td><b>Personal information leaving the source</b></td><td>Customer names and emails are tagged PII. The pipeline can&rsquo;t pass until they&rsquo;re protected with a one-way hash, and PII never appears in any preview &mdash; to people or to the model.</td></tr>
+  <tr><td><b>Orders with no customer</b></td><td>&ldquo;98.5% of Orders rows match&hellip; 6 have a customer_id that doesn&rsquo;t exist in Customers.&rdquo; Kept, flagged, and never silently dropped.</td></tr>
+  <tr><td><b>Stale data</b></td><td>A source loaded six days ago can&rsquo;t quietly feed a daily report: the check names the owner to ask.</td></tr>
+  <tr><td><b>Everyday mistakes</b></td><td>Misspelled values (&ldquo;did you mean <i>completed</i>?&rdquo;), totalling a text column, unknown columns, reading across platforms, a raw table when a certified one exists.</td></tr>
+</table>
+
+<figure class="shot">
+  <img src="de-checks.jpg" width="1920" height="1140" loading="lazy" alt="Sandbox result blocking a customer list because name and email are personal information, each with an Apply fix button">
+  <figcaption>A customer list blocked by policy: personal information must be protected before it can leave the source. One click fixes it.</figcaption>
+</figure>
+
+<h2 class="sec">The governance, built in</h2>
+<ul class="plain">
+  <li><b>No freehand code.</b> Claude fills in a typed spec. A deterministic compiler writes every line of SQL, PySpark and dbt &mdash; the same spec always produces the same code.</li>
+  <li><b>Tested version only.</b> Only the exact version that passed the sandbox can be requested. Change anything and it goes back to draft; a pending request is cancelled.</li>
+  <li><b>Re-tested at approval.</b> Approval re-runs the sandbox. If anything fails now, nothing deploys &mdash; every control fails closed.</li>
+  <li><b>Separation of duties.</b> The person who asked can&rsquo;t approve their own deployment, and names that identify an AI, a bot or an automated system are refused.</li>
+  <li><b>Bounded authority.</b> Claude can read the catalog, draft and test pipelines, and <em>request</em> a deployment. It has no tool to deploy, approve, change the catalog or run arbitrary queries.</li>
+  <li><b>Human-validated answers, audit trail, limits.</b> Every AI answer waits for review with a grounding check on its numbers; every step is in an append-only audit log; a limiter and kill switch cap usage, and the builder keeps working when AI is off.</li>
+</ul>
+<div class="gate">Request &#9658; spec &#9658; compiled code &#9658; SANDBOX &#9472;&#9516;&#9472; fails &#9472;&#9472;&#9658; fix (one click) &#9658; test again
+                                     &#9492;&#9472; passes &#9472;&#9658; request &#9658; NAMED HUMAN &#9472;&#9516;&#9472; approve &#9658; re-test &#9658; deploy + lineage
+                                                                    &#9492;&#9472; reject + reason &#9658; nothing deploys</div>
+
+<div class="pull"><div class="plabel">The governance I applied</div><div class="q">&ldquo;A wrong join doesn&rsquo;t throw an error &mdash; it just makes the number bigger, and someone makes a decision on it. So the AI never writes the code, the sandbox has to prove it, and a person signs off before anything goes live.&rdquo;</div><div class="a">&mdash; Wendell Killette, Agile by Killette</div></div>
+
+<h2 class="sec">For developers</h2>
+<p class="lead">One switch reveals everything. From one spec the agent generates the platform SQL, a PySpark notebook (Databricks and Fabric), a dbt model with tests that follow the grain, the platform&rsquo;s schedule file, and the exact SQL the sandbox ran.</p>
+<figure class="shot">
+  <img src="de-code.jpg" width="1920" height="1140" loading="lazy" alt="Developer view showing generated Snowflake SQL and dbt tests for a monthly revenue pipeline">
+  <figcaption>Developer view: the generated Snowflake SQL and dbt tests, ready to commit. The connectors are simulated in the demo; a real workspace plugs in by overriding one method.</figcaption>
+</figure>
+
+<h2 class="sec">How it&rsquo;s built</h2>
+<ol class="steps">
+  <li><b>A FastAPI service with 26 API operations.</b><span>Catalog, lineage, runs, compile, pipelines, sandbox tests, fixes, deployment requests, approvals, the agent, the review queue, audit and governance &mdash; with interactive API docs.</span></li>
+  <li><b>A spec, a compiler and a sandbox.</b><span>A typed pipeline spec checked against the catalog; a compiler for Databricks SQL, Snowflake SQL, Fabric T-SQL, PySpark and dbt; and an isolated sandbox that executes it and runs the quality and compliance checks.</span></li>
+  <li><b>Claude on top, with bounded authority.</b><span>Eight tools: search the catalog, read a dataset, list platforms, draft or revise a pipeline, test it, apply a fix, and request deployment &mdash; which only queues it for a person.</span></li>
+  <li><b>Built to run and to be checked.</b><span>PostgreSQL or SQLite, Docker, a Render blueprint, and 51 automated tests &mdash; including a scripted stand-in for Claude, so CI needs no secrets.</span></li>
+</ol>
+
+<div class="callout"><b>Why I built it this way:</b> I&rsquo;ve spent years between business teams waiting on data and engineering teams buried in tickets. This agent shortens that queue without lowering the bar: the business user gets an answer in minutes, the engineer gets reviewable code, and the data owner keeps control of what goes live.</div>
+
+<div class="statband">
+  <div class="stat"><div class="num">3</div><div class="lbl">platforms: Databricks, Snowflake, Fabric</div></div>
+  <div class="stat"><div class="num">5</div><div class="lbl">code outputs from one spec</div></div>
+  <div class="stat"><div class="num">51</div><div class="lbl">tests passing</div></div>
+  <div class="stat"><div class="num">100%</div><div class="lbl">of deployments approved by a named human</div></div>
+  <div class="stat"><div class="num">0</div><div class="lbl">lines of code the AI writes freehand</div></div>
+</div>
+
+</section>
+
+<div class="final">
+  <h2>See it, or talk through it</h2>
+  <p>Built on a fictional retailer&rsquo;s data as a portfolio reference. Build a pipeline, watch the sandbox catch the problems, approve the deployment yourself &mdash; or let&rsquo;s talk about governed AI for your data teams.</p>
+  <a class="btn gold" href="https://data-engineering-agent.onrender.com" target="_blank" rel="noopener">Launch the live sandbox</a>
+  <a class="btn ghost" href="https://github.com/bowlingwithmrwendell/data-engineering-agent" target="_blank" rel="noopener">View the source</a>
+  <a class="btn ghost" href="mailto:wendell@agilebykillette.com?subject=Data%20Engineering%20Agent%20-%20Let%27s%20talk">Book a governance call</a>
+  <p class="pending">The sandbox runs on a free instance that sleeps when idle &mdash; the first load may take 30&ndash;60 seconds to wake. Data resets each time it wakes. Built on fictional data.</p>
+</div>
+</div>
+<footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette &middot; Agile Coach &middot; Scrum Master &middot; RTE &middot; PMP-trained PM &middot; wendell@agilebykillette.com &middot; 469-774-2233</div></div></footer>
+<script src="/scrum-agent.js" defer></script>
+</body>
+</html>
