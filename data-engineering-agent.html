@@ -92,6 +92,18 @@
   footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
   footer .contact{font-size:14px}
   @media print{body{background:#fff}.card,.pull,.steps li{break-inside:avoid;box-shadow:none}header:after,.pull:after{display:none}}
+  .plat3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 8px}
+  .plat3 figure{margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 22px rgba(21,42,64,.10);background:#fff}
+  .plat3 a{display:block;cursor:zoom-in} .plat3 img{width:100%;height:auto;display:block}
+  .plat3 figcaption{font-size:13.5px;color:var(--navy);font-weight:700;padding:10px 12px;text-align:center}
+  .shot.card1{max-width:640px;margin-left:auto;margin-right:auto} .shot.card1 a{display:block;cursor:zoom-in}
+  table.pt{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0 6px;font-size:14.5px}
+  table.pt th{background:var(--navy2,#152A40);color:#C9A85C;text-align:left;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:11px 14px}
+  table.pt td{padding:11px 14px;border-top:1px solid var(--line);color:#42556B;vertical-align:top}
+  table.pt td:first-child{color:#1F3B57;font-weight:700;white-space:nowrap}
+  table.pt code{font-family:'Courier New',monospace;font-size:13px;color:#1F3B57;background:#EEF3F8;padding:1px 5px;border-radius:4px;word-break:break-all}
+  .tablewrap{overflow-x:auto}
+  @media(max-width:720px){.plat3{grid-template-columns:1fr}}
 </style>
 <style>
   .heroshot img,.shot img{height:auto}
@@ -185,6 +197,27 @@
                                                                     &#9492;&#9472; reject + reason &#9658; nothing deploys</div>
 
 <div class="pull"><div class="plabel">The governance I applied</div><div class="q">&ldquo;A wrong join doesn&rsquo;t throw an error &mdash; it just makes the number bigger, and someone makes a decision on it. So the AI never writes the code, the sandbox has to prove it, and a person signs off before anything goes live.&rdquo;</div><div class="a">&mdash; Wendell Killette, Agile by Killette</div></div>
+
+<h2 class="sec">One governance, three platforms</h2>
+<p class="lead">The coaching card tells the whole story on one page: the gap, the trusted data flow, what the sandbox catches, and the controls that make it safe.</p>
+<figure class="shot card1"><a href="de-card-coaching.jpg" target="_blank" rel="noopener" title="Open the card full size"><img src="de-card-coaching.jpg" width="1254" height="1254" loading="lazy" alt="Data Engineering Agent coaching card by Wendell Killette, Agile by Killette. AI accelerates, controls protect, humans approve. From business request to trusted data. The gap in every data team: the people who need data can't build pipelines, and the people who can are a queue; freehand AI just moves the risk. The trusted data flow: request, spec, compile, sandbox, approve, deploy. What the sandbox catches: doubled totals from a bad join, personal information, orders with no customer, stale data, everyday mistakes. The governance, built in: no freehand code, tested version only, re-tested at approval, separation of duties, bounded authority, full audit trail. By the numbers: 3 platforms, 5 code outputs per spec, 69 automated tests, 0 lines the AI writes freehand, 100% of deployments approved by a named human."></a><figcaption>Tap any card to open it full size.</figcaption></figure>
+
+<p class="lead"><b>Why there are three cards that look almost the same.</b> They&rsquo;re meant to. Put them side by side and only two things change: the panel on the right and the list of files. Everything that makes the agent safe &mdash; the sandbox, the approval gate, separation of duties, the audit trail &mdash; is identical on every platform. A Databricks team, a Snowflake team and a Fabric team get the same controls. Only the platform details adapt.</p>
+<div class="plat3">
+<figure><a href="de-card-databricks.jpg" target="_blank" rel="noopener"><img src="de-card-databricks.jpg" width="1254" height="1254" loading="lazy" alt="Data Engineering Agent on Databricks: tables named lakeside.gold.monthly_revenue in Unity Catalog, Databricks SQL, a PySpark notebook, scheduled as a Databricks Job in an Asset Bundle, deployed with CREATE OR REPLACE. Same sandbox and approval gate."></a><figcaption>On Databricks</figcaption></figure>
+<figure><a href="de-card-snowflake.jpg" target="_blank" rel="noopener"><img src="de-card-snowflake.jpg" width="1254" height="1254" loading="lazy" alt="Data Engineering Agent on Snowflake: tables named LAKESIDE.GOLD.MONTHLY_REVENUE, Snowflake SQL, no PySpark needed, scheduled as a Snowflake Task on a virtual warehouse, deployed with CREATE OR REPLACE. Same sandbox and approval gate."></a><figcaption>On Snowflake</figcaption></figure>
+<figure><a href="de-card-fabric.jpg" target="_blank" rel="noopener"><img src="de-card-fabric.jpg" width="1254" height="1254" loading="lazy" alt="Data Engineering Agent on Microsoft Fabric: tables named lakeside_wh.gold.monthly_revenue, Fabric Warehouse T-SQL, a Lakehouse PySpark notebook, scheduled as a Data Factory pipeline, deployed with CREATE TABLE AS SELECT. Same sandbox and approval gate."></a><figcaption>On Microsoft Fabric</figcaption></figure>
+</div>
+<p class="lead">Here is everything that changes, in one place:</p>
+<div class="tablewrap"><table class="pt">
+<tr><th></th><th>Databricks</th><th>Snowflake</th><th>Microsoft Fabric</th></tr>
+<tr><td>Table name</td><td><code>lakeside.gold.monthly_revenue</code></td><td><code>LAKESIDE.GOLD.MONTHLY_REVENUE</code></td><td><code>lakeside_wh.gold.monthly_revenue</code></td></tr>
+<tr><td>SQL</td><td>Databricks SQL on Unity Catalog</td><td>Snowflake SQL</td><td>Fabric Warehouse T-SQL</td></tr>
+<tr><td>PySpark</td><td>Notebook</td><td>Not needed</td><td>Lakehouse notebook</td></tr>
+<tr><td>Schedule</td><td>Asset Bundle job (<code>databricks.yml</code>)</td><td>Snowflake Task (<code>task.sql</code>)</td><td>Data Factory pipeline (<code>pipeline.json</code>)</td></tr>
+<tr><td>Deploys as</td><td>CREATE OR REPLACE</td><td>CREATE OR REPLACE</td><td>CREATE TABLE AS SELECT</td></tr>
+<tr><td>Sandbox, approval, audit</td><td colspan="3"><b>Identical on all three.</b> That&rsquo;s the point.</td></tr>
+</table></div>
 
 <h2 class="sec">For developers</h2>
 <p class="lead">One switch reveals everything. From one spec the agent generates the platform SQL, a PySpark notebook (Databricks and Fabric), a dbt model with tests that follow the grain, the platform&rsquo;s schedule file, and the exact SQL the sandbox ran.</p>
