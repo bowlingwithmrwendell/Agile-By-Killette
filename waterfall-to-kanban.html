@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waterfall to Kanban: Make the Waiting Visible &mdash; Agile by Killette</title>
+<meta name="description" content="Moving a team off waterfall without breaking it: map the process you already run, tighten WIP gradually, run standups on flow, and measure lead time, cycle time and throughput. Plus where AI helps and how it adapts to data engineering.">
+<link rel="canonical" href="https://agilebykillette.com/waterfall-to-kanban.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Agile by Killette">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Waterfall to Kanban: Make the Waiting Visible">
+<meta property="og:description" content="Moving a team off waterfall without breaking it: map the process you already run, tighten WIP gradually, run standups on flow, and measure lead time, cycle time and throughput. Plus where AI helps and how it adapts to data engineering.">
+<meta property="og:url" content="https://agilebykillette.com/waterfall-to-kanban.html">
+<meta property="og:image" content="https://agilebykillette.com/og-waterfall-to-kanban.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Waterfall to Kanban: Make the Waiting Visible">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Waterfall to Kanban: Make the Waiting Visible">
+<meta name="twitter:description" content="Moving a team off waterfall without breaking it: map the process you already run, tighten WIP gradually, run standups on flow, and measure lead time, cycle time and throughput. Plus where AI helps and how it adapts to data engineering.">
+<meta name="twitter:image" content="https://agilebykillette.com/og-waterfall-to-kanban.jpg">
+<meta name="author" content="Wendell Killette">
+<meta name="theme-color" content="#152A40">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+  :root{--navy:#1F3B57;--navy2:#152A40;--gold:#B08D3E;--gold2:#C9A85C;--ink:#14202B;--slate:#42556B;--muted:#6B7C8F;--line:#E3E9EF;--bg:#F5F8FB;--green:#2E7D57;--red:#B4483C;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  .home{display:inline-block;color:var(--gold2);font-weight:600;font-size:.92rem;margin-bottom:18px}
+  .home:hover{color:#fff}
+  header{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;padding:46px 0 44px;position:relative;overflow:hidden}
+  header:after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12.5px;font-weight:700;color:var(--gold2);margin-bottom:12px}
+  header h1{font-size:42px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px;max-width:19ch;position:relative}
+  header h1 .g{color:var(--gold2)}
+  header .lede{color:#D6E0EA;font-size:18px;max-width:660px;position:relative}
+  .tagline{color:var(--gold2);font-style:italic;font-weight:600;margin-top:14px;font-size:14.5px;position:relative}
+  .heroshot{margin:26px 0 4px;border-radius:16px;overflow:hidden;box-shadow:0 14px 38px rgba(21,42,64,.16);border:1px solid var(--line);background:#fff}
+  .heroshot img{width:100%;display:block}
+  .heroshot figcaption{font-size:13.5px;color:var(--muted);padding:12px 16px;text-align:center;font-style:italic}
+  .heroshot.tall img{max-height:none}
+  .intro{color:var(--slate);font-size:16px;max-width:760px;margin:28px auto 8px;border-left:3px solid var(--gold);padding-left:16px}
+  section.body{padding:22px 0 6px}
+  h2.sec{font-size:1.55rem;color:var(--navy);font-weight:800;margin:32px 0 14px;border-bottom:2px solid var(--gold);padding-bottom:8px;display:inline-block}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .card h3{font-size:1.28rem;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .card .csub{color:var(--muted);font-size:.85rem;font-weight:600;margin-bottom:14px}
+  p.lead{color:var(--slate);font-size:15.5px;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .chip{background:#EEF3F8;color:var(--navy);border:1px solid #dbe6f0;font-size:13.5px;font-weight:600;padding:6px 13px;border-radius:8px}
+  ul.plain{list-style:none;margin-top:6px} ul.plain li{position:relative;padding-left:24px;margin-bottom:9px;color:var(--slate);font-size:15px}
+  ul.plain li:before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--gold);border-radius:3px;transform:rotate(45deg)}
+  ul.plain li b{color:var(--ink)}
+  .steps{list-style:none;counter-reset:s;margin-top:8px}
+  .steps li{counter-increment:s;position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px 22px 18px 70px;margin-bottom:12px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .steps li:before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:17px;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem}
+  .steps li b{display:block;color:var(--navy);font-size:1.06rem;margin-bottom:3px}
+  .steps li span{color:var(--slate);font-size:15px}
+  .pull{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:28px 30px;margin:26px 0;position:relative;overflow:hidden}
+  .pull:after{content:"";position:absolute;left:-80px;bottom:-80px;width:250px;height:250px;border:2px solid rgba(176,141,62,.22);border-radius:50%}
+  .pull .q{font-size:1.35rem;font-weight:700;font-style:italic;color:#fff;position:relative}
+  .pull .a{color:var(--gold2);font-size:.9rem;font-weight:600;margin-top:10px;position:relative}
+  .callout{background:linear-gradient(120deg,rgba(176,141,62,.12),rgba(31,59,87,.04));border:1px solid #ecdcb4;border-radius:12px;padding:18px 20px;margin:18px 0}
+  .callout b{color:var(--navy)}
+  .seq{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;background:var(--navy2);border-radius:14px;padding:20px;margin:18px 0}
+  .seq span{color:#fff;font-weight:800;letter-spacing:.04em;font-size:1rem}
+  .seq i{color:var(--gold2);font-style:normal;font-weight:800}
+  .rolegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+  .role{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:16px 18px;box-shadow:0 5px 16px rgba(21,42,64,.05)}
+  .role h4{color:var(--navy);font-size:1.02rem;margin-bottom:4px}
+  .role p{color:var(--slate);font-size:14.5px}
+  @media(max-width:640px){.rolegrid{grid-template-columns:1fr}header h1{font-size:32px}}
+  .final{background:linear-gradient(155deg,var(--navy),var(--navy2));color:#fff;text-align:center;border-radius:16px;padding:32px;margin:26px 0 6px;position:relative;overflow:hidden}
+  .final:after{content:"";position:absolute;left:-90px;bottom:-90px;width:280px;height:280px;border:2px solid rgba(176,141,62,.24);border-radius:50%}
+  .final h2{font-size:1.6rem;margin-bottom:10px;position:relative}
+  .final p{color:#D6E0EA;max-width:560px;margin:0 auto 22px;position:relative}
+  .final a.btn{position:relative;display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:14px 32px;border-radius:40px}
+  .final a.btn:hover{background:var(--gold2)}
+  footer{text-align:center;padding:30px 0 46px;color:var(--muted)}
+  footer .brand{font-weight:800;color:var(--navy);font-size:18px}
+  footer .tag{color:var(--gold);font-style:italic;margin:6px 0 10px}
+  footer .contact{font-size:14px}
+  @media print{body{background:#fff}.card,.pull,.steps li{break-inside:avoid;box-shadow:none}header:after,.pull:after{display:none}}
+
+  
+  /* --- Waterfall to Kanban page additions --- */
+  header h1{max-width:24ch}
+  .heroshot.square{max-width:600px;margin-left:auto;margin-right:auto}
+  .heroshot a{display:block;cursor:zoom-in}
+  .src{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 4px}
+  .src div{background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:14px 16px}
+  .src b{display:block;color:var(--navy);font-size:1rem;margin-bottom:2px}
+  .src i{display:block;color:var(--gold);font-style:normal;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+  .src span{color:var(--slate);font-size:14.5px}
+  .disclose{background:#fff;border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:12px;padding:18px 20px;margin:18px 0 6px;color:var(--slate);font-size:15.5px}
+  .disclose b{color:var(--navy)}
+  @media(max-width:700px){.src{grid-template-columns:1fr}}
+  table.ia{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 5px 16px rgba(21,42,64,.05);margin-top:10px}
+  table.ia th{background:var(--navy2);color:var(--gold2);text-align:left;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px}
+  table.ia td{padding:12px 16px;border-top:1px solid var(--line);color:var(--slate);font-size:14.5px;vertical-align:top}
+  table.ia td:first-child{color:var(--navy);font-weight:700;white-space:nowrap}
+  table.ia code{font-family:'Courier New',monospace;background:#EEF3F8;color:var(--navy);padding:2px 6px;border-radius:5px;font-size:13.5px;white-space:nowrap}
+  @media(max-width:640px){table.ia td:first-child{white-space:normal}table.ia th,table.ia td{padding:10px 10px;font-size:13.5px}table.ia code{white-space:normal}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="home" href="index.html">&lsaquo; Back to agilebykillette.com</a>
+  <div class="eyebrow">Field guide &middot; Agile by Killette</div>
+  <h1>Waterfall to Kanban: <span class="g">Make the Waiting Visible</span></h1>
+  <div class="lede">Waterfall rarely fails because people sequence their work. It fails because nobody can see the queues between the stages. Kanban fixes that by starting with the process you already run &mdash; not by throwing it out on day one.</div>
+  <div class="tagline">Visualize. Flow. Measure. Improve.</div>
+</div></header>
+<div class="wrap">
+<figure class="heroshot square"><a href="hero-waterfall-kanban.jpg" target="_blank" rel="noopener" title="Open the card full size"><img src="hero-waterfall-kanban.jpg" alt="Waterfall to Kanban card by Wendell Killette, Agile by Killette. Visualize, flow, measure, improve. Don't tear the process down; make the waiting visible. A coach, seen from behind, works a shared digital Kanban board with a remote team on a video call. Start with what you do now: waterfall rarely fails because people sequence their work, it fails because nobody can see where the work waits. Put the team's own stages on one shared board, then shrink the queues. Remote? The board is the room. The flow cycle: visualize, limit WIP, flow, measure, improve. The five moves: map the process; limit WIP gradually; standups on flow, right to left; measure the flow; pull, with policies. The data connection, then and now: mapping, field by field by hand at AT&amp;T, lineage graphs now; access, one SPOC across silos then, blocker cards owned and dated now; compatibility, fixed before cutover then, schema drift raising an Expedite card now; cutover, validated end to end then, quality gates in the Definition of Done now. The flow math: lead time equals done minus requested; cycle time equals done minus started; throughput equals items over time; Little's Law, WIP equals throughput times cycle time. Start less. Finish sooner. From ceremony to ownership."></a><figcaption>Tap the card to open it full size &mdash; every point on it is written out below in readable text.</figcaption></figure>
+
+<p class="intro"><b>Start with what the team does now.</b> The fastest way to lose a waterfall team is to tell them everything they know is wrong. The fastest way to win them is to put their own process on a board and let them see where the work actually waits.</p>
+
+<div class="disclose"><b>Where this comes from.</b> The transition method is how I coach teams off waterfall. The migration lessons come from a legacy-platform migration and sunset I led as Scrum Master at AT&amp;T (2018&ndash;2020) &mdash; that work isn&rsquo;t on my r&eacute;sum&eacute;, so I&rsquo;m stating it here. The data-engineering adaptations come from the research behind my <a href="data-engineering-agent.html" style="color:var(--gold);font-weight:700">Data Engineering Agent</a>. The tools named reflect current practice, not the AT&amp;T toolset.</div>
+<div class="src">
+<div><i>How I work</i><b>Coaching practice</b><span>The five transition moves and the flow math.</span></div>
+<div><i>Lived experience</i><b>AT&amp;T, 2018&ndash;2020</b><span>Mapping, the access gateway, compatibility fixes, cutover and sunset.</span></div>
+<div><i>Research &amp; build</i><b>Data Engineering Agent</b><span>Lineage, quality gates, schema drift, and decomposing ETL &mdash; current practice.</span></div>
+</div>
+
+<section class="body">
+
+<h2 class="sec">The transition, in five moves</h2>
+<ol class="steps">
+<li><b>Map the existing process</b><span>Mirror the current sequential handoffs on one shared board &mdash; a wall for a team in one room, a digital board for a remote or hybrid one &mdash; using the stage names the team already uses &mdash; Requirements, Architecture Review, Development, QA, Deployment. Split each stage into <i>In Progress</i> and <i>Done</i> so the queue build-up and the waiting time show up on their own.</span></li>
+<li><b>Establish WIP limits gradually</b><span>Set the first limits to match current headcount or historical capacity, so nobody&rsquo;s week changes overnight. Then tighten them a little at a time. Each notch surfaces the next downstream bottleneck and rewards finishing work over starting it.</span></li>
+<li><b>Shift standups to focus on flow</b><span>Walk the board from right to left &mdash; closest to done first &mdash; in the room or with the board shared on camera. The conversation is about unblocking what is stuck and finishing what is close, not a round of individual status reports.</span></li>
+<li><b>Measure flow metrics</b><span>Track cycle time, lead time, throughput and a cumulative flow diagram. Real numbers replace estimation-by-opinion and give the retrospective something to inspect.</span></li>
+<li><b>Formalize the pull system and explicit policies</b><span>Give every column an entry and exit rule &mdash; a Definition of Ready and a Definition of Done per stage &mdash; so people pull work only when they have capacity.</span></li>
+</ol>
+
+<div class="pull"><div class="q">&ldquo;Don&rsquo;t tear the process down. Put it on the wall, and let the team see where the work waits.&rdquo;</div><div class="a">Fewer handoffs. More flow.</div></div>
+
+<h2 class="sec">Where AI earns its place</h2>
+<p class="lead">AI doesn&rsquo;t run the transition. It takes the reading and drafting off the team&rsquo;s plate so the conversations happen sooner and rest on evidence.</p>
+<div class="rolegrid">
+<div class="role"><h4>Requirements decomposition</h4><p>Read legacy requirements documents and architecture specs and draft small, vertical-slice stories with first-pass acceptance criteria for the team to refine.</p></div>
+<div class="role"><h4>Historical workflow discovery</h4><p>Analyze past tickets and repository history to find the hidden queues, the handoff delays and the real cycle times of the legacy stages.</p></div>
+<div class="role"><h4>Probabilistic forecasting</h4><p>Replace the static Gantt estimate with Monte Carlo simulations over actual delivery history &mdash; dates with a confidence range instead of a single hopeful number.</p></div>
+<div class="role"><h4>Proactive bottleneck alerts</h4><p>Monitor the tracking tool and flag aging work items that are drifting past normal cycle time, before they breach a service level.</p></div>
+<div class="role"><h4>Drafting explicit policies</h4><p>Draft the Definition of Ready, Definition of Done and class-of-service policies from the organization&rsquo;s own governance standards &mdash; for the team to edit and own.</p></div>
+<div class="role"><h4>The rule underneath</h4><p>A person reviews every AI output before it lands on the board, and no client data goes into public AI tools &mdash; enterprise-governed tooling only.</p></div>
+</div>
+<div class="callout"><b>Most of this lives in Jira.</b> The queries and reports I use to read a board &mdash; aging WIP, blocked items, throughput &mdash; are in the <a href="ai-jira-playbook.html" style="color:var(--gold);font-weight:700">AI + Jira Playbook &rarr;</a></div>
+
+<h2 class="sec">The data connection &mdash; AT&amp;T, then and now</h2>
+<p class="lead">At AT&amp;T I led the Scrum team through a major data migration that sunset a legacy platform. I was the central gateway for access &mdash; coordinating across teams to map the data, request the clearances, and make sure every handoff was secure. Then I managed the final decommissioning of the old platform&rsquo;s services, working through compatibility issues so the cutover landed without disrupting the business.</p>
+<ul class="plain">
+<li><b>Data mapping and discovery</b> &mdash; early discovery to map legacy source fields and structures accurately to the target platform.</li>
+<li><b>Access control and gateway coordination</b> &mdash; the single point of contact across siloed cross-functional groups, securing clearances for the tables, databases and environments the migration needed.</li>
+<li><b>Legacy compatibility remediation</b> &mdash; finding the components that needed updates before cutover could happen safely, and getting them fixed first.</li>
+<li><b>Decommissioning and cutover verification</b> &mdash; orchestrating the shutdown and sunset of the legacy services once end-to-end transfer was validated.</li>
+</ul>
+<p class="lead">That project taught me where a data migration breaks. The research behind the agent is how I&rsquo;d stop it breaking today:</p>
+<table class="ia">
+<tr><th>The risk</th><th>Then &mdash; AT&amp;T</th><th>Now &mdash; how I&rsquo;d run it</th></tr>
+<tr><td>Mapping</td><td>Field-by-field discovery, done by hand</td><td>Lineage graphs map the dependencies before anyone commits</td></tr>
+<tr><td>Access</td><td>One person brokering clearances across silos</td><td>Access requests as visible blocker cards, owned and dated on the board</td></tr>
+<tr><td>Compatibility</td><td>Found and fixed ahead of cutover</td><td>Schema-drift alerts raise an Expedite card the moment something changes upstream</td></tr>
+<tr><td>Cutover</td><td>End-to-end transfer validated before sunset</td><td>Automated data-quality gates built into the Definition of Done</td></tr>
+</table>
+
+<h2 class="sec">Adapting it for data engineering</h2>
+<p class="lead">Data teams inherit the hardest version of waterfall: one giant pipeline, one big release, and breakages that show up downstream days later. The same moves apply, with four adaptations.</p>
+<ol class="steps">
+<li><b>Map pipeline lineage and dependencies</b><span>Break monolithic pipelines into modular data-delivery slices. Use SQL, dbt lineage graphs and data catalogs to link upstream schema changes and transformation prerequisites as visible blockers on the board.</span></li>
+<li><b>Automate data quality gates</b><span>Build validation suites &mdash; Great Expectations, dbt tests &mdash; into each card&rsquo;s exit criteria, so automated verification is part of the Definition of Done rather than a step after it.</span></li>
+<li><b>Alert on schema drift upstream</b><span>Monitor source systems and DDL logs. When an unexpected schema change lands, raise an Expedite card automatically, pre-filled with the impact analysis.</span></li>
+<li><b>Decompose monolithic ETL / ELT jobs</b><span>Break legacy stored procedures and orchestration scripts into incremental micro-batch stories or modular pipeline stages that can be pulled one at a time.</span></li>
+</ol>
+<div class="seq"><span>LEGACY PIPELINE</span><i>&rarr;</i><span>ANALYZE &amp; DECOMPOSE</span><i>&rarr;</i><span>MODULAR PIPELINES</span></div>
+<p class="lead">Monolithic, complex and fragile on the left. Smaller, independent and pull-ready on the right. The research and build behind these moves: <a href="data-engineering-agent.html" style="color:var(--gold);font-weight:700">Data Engineering Agent &rarr;</a></p>
+
+<h2 class="sec">The flow math</h2>
+<table class="ia">
+<tr><th>Metric</th><th>What it measures</th><th>Formula</th></tr>
+<tr><td>Lead time</td><td>From the moment a request is made or committed to the backlog until the value reaches the customer.</td><td><code>Completion &minus; Request</code></td></tr>
+<tr><td>Cycle time</td><td>From when active work starts &mdash; pulled into In Progress &mdash; until it reaches Done.</td><td><code>End &minus; Start</code></td></tr>
+<tr><td>Throughput</td><td>Completed items delivered per unit of time, such as per week or per sprint.</td><td><code>TH = N &divide; T</code></td></tr>
+<tr><td>Little&rsquo;s Law</td><td>How work in progress, throughput and average cycle time relate in a stable system.</td><td><code>WIP = TH &times; Cycle time</code></td></tr>
+</table>
+<div class="callout"><b>Why Little&rsquo;s Law matters in practice:</b> rearranged, it says average cycle time equals WIP divided by throughput. If the team can&rsquo;t finish faster, it can still deliver sooner &mdash; by starting less at once. That is the whole argument for WIP limits in one line.</div>
+
+</section>
+
+<div class="final">
+  <h2>Moving a team off waterfall?</h2>
+  <p>I start with the process your people already run, make the waiting visible, and coach the flow from there. Let&rsquo;s talk about where your teams are today.</p>
+  <a class="btn js-mail" href="mailto:wendell@agilebykillette.com?subject=Agile%20by%20Killette%20-%20Waterfall%20to%20Kanban">Book a conversation &rarr;</a>
+  <a href="tel:+14697742233" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Call 469-774-2233</a>
+  <a href="https://linkedin.com/in/wendell-killette-3378b82" target="_blank" rel="noopener" style="position:relative;display:inline-block;margin:10px 5px 0;padding:12px 24px;border-radius:40px;border:1.5px solid #C9A85C;background:transparent;color:#fff;font-weight:700;text-decoration:none">Message on LinkedIn</a>
+  <p class="mail-note" style="position:relative;margin:16px auto 0;font-size:.9rem;color:#D6E0EA">Email app didn&rsquo;t open? Write to <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b></p>
+</div>
+
+</div>
+<footer><div class="wrap"><div class="brand">Agile by Killette</div><div class="tag">From ceremony to ownership.</div><div class="contact">Wendell Killette &middot; Agile Coach &middot; Scrum Master &middot; RTE &middot; PMP-trained PM &middot; wendell@agilebykillette.com &middot; 469-774-2233</div></div></footer>
+<script>
+document.querySelectorAll('a.js-mail').forEach(function(a){a.addEventListener('click',function(){
+  var n=a.parentNode.querySelector('.mail-note');
+  try{navigator.clipboard.writeText('wendell@agilebykillette.com').then(function(){if(n)n.innerHTML='Address copied &mdash; paste it into your email: <b style="color:#fff;user-select:all">wendell@agilebykillette.com</b>';});}catch(e){}
+});});
+</script>
+<script src="/scrum-agent.js" defer></script>
+</body>
+</html>
